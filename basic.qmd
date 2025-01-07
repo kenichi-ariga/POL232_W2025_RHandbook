@@ -1,0 +1,437 @@
+# Basic Use of RStudio
+
+## Very Basics
+
+### Open RStudio Desktop
+
+You may open R and use it directly through its own GUI, but many people find using R through RStudio more intuitive and easier than using R directly. When you use RStudio, you don't need to open R. [Just open RStudio only]{.red-text}, as it also quietly starts R behind its GUI. Let's open RStudio. Then, you will see the following GUI.
+
+```{r, out.width="150%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig1.jpg") 
+```
+
+In R, we have our work done by executing a command. We enter a command after the `>` prompt in **the R Console**, and then, the command will be executed by R.
+
+```{r, out.width="100%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig1b.jpg")
+```
+
+In RStudio, we can also choose a menu from its GUI, and RStudio translates our input into a command and execute it in **the R Console**. Let's see an example by reading the datasets we will use in this class.
+
+### Datasets Used in POL232
+
+I prepared the datasets you will use in this class in the `RData` format, which is available on the class Quercus site. Go to the class Quercus site and download the following file to your computer (remember where you downloaded it).
+
+```{r, eval=FALSE}
+    POL232.RData
+```
+
+Let's open `POL232.RData` in RStudio.
+
+<!-- ## If you use the JupyterHub,... -->
+
+<!-- If you use RStudio Desktop installed on your computer, you may skip this section. -->
+
+<!-- If you use RStudio online through [the JupyterHub](https://jupyter.utoronto.ca), you first need to upload `POL232.RData` to [the JupyterHub](https://jupyter.utoronto.ca). -->
+
+### Load Datasets to RStudio: `load()`
+
+We use a menu from GUI of RStudio to load `POL232.RData` to RStudio. First, choose an open folder icon on the `Environment` tab on the upper right pane of RStudio.
+
+```{r, out.width="150%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig2.jpg")
+```
+
+Then, locate `POL232.RData` on your computer and choose it to open. In the following figure, I have located `POL232.RData` in the `TEMP` folder on my `Desktop`. Note, however, that the location where you have downloaded `POL232.RData` is different from mine. <!-- (or your JupyterHub account)  -->
+
+```{r, out.width="100%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig3.jpg")
+```
+
+Then, the content of `POL232.RData` appears in the upper right pane of RStudio. As you can see, `POL232.RData` includes five datasets named `anes2020`, `ces2019`, `ipe2020`, `ipe2015`, and `usstates2010`. The datasets are stored in the format called `data frame` in R. So I will call these datasets `data frames` onward. To learn more about these data frames, see the codebooks available on the class Quercus site.
+
+```{r, out.width="150%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig4.jpg")
+```
+
+As you can see on the left pane of RStudio (see the red arrow), when we chose `POL232.RData` to open, RStudio translated this action into an R command and executed in **the R Console**. The commands used in R consist of `R functions`. An R function mostly takes the form of `function.name(...)`, and we input **arguments** in the `...` within the parentheses.
+
+In the above example, to open `POL232.RData`, RStudio executed the `load()` function which takes the name and location (a file path) of the file as its argument (recall that **an argument** refers to what we specify in the parentheses of R functions). As you can see in the above figure, RStudio used the following code to open `POL232.RData`.
+
+```{r, eval=FALSE}
+  load("~/Desktop/TEMP/POL232.RData")
+```
+
+```{r, echo=FALSE, message=FALSE}
+  setwd("/Users/kenichi/Desktop/TEMP")
+  load("POL232.RData")
+```
+
+### Browse Data Frame: `View()`
+
+Let's browse a data frame by entering a command in **the R console** directly. You may use the `View()` function for this purpose. Include the name of the data frame you want to browse as argument; i.e., include it inside `()`.
+
+```{r, eval=FALSE}
+  View(ces2019)
+```
+
+Then, the data frame specified will be open at the upper left pane as shown below.
+
+```{r, out.width="100%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig5.jpg")
+```
+
+An alternative to typing in `View(ces2019)` in **the R console** is to click `ces2019` in the **Environment** tab at the upper right pane. ![](figures/RHB_Ch2_Fig5b.png){width="100%"} Then, RStudio will execute `View(ces2019)` for you to open the data frame in the upper left pane.
+
+You may browse the data frame in this way. As you can see, the data frame is structured such that each row corresponds to each observation (in this case, each respondent of the survey) and each column corresponds to each variable. See `ces2019_codebook.pdf` for the description of the variables included in `ces2019`.
+
+I'd suggest you browse other data frames such as `anes2020` and `ipe2010`. Try both typing in the `View()` function directly in **the R console** and clicking the name of a data frame on the **Environment** tab on the upper right pane.
+
+### Getting Help for Functions: `help()` or `?`
+
+If you need help for a function, you may use the `help()` function with the name of your function of interest in the parentheses or `?` operator followed by the name of the function. Try `help(View)` and `? View`. Both of them will open the help window for `View()` on the lower right pane of RStudio.
+
+```{r}
+  help(View)
+  ? View
+```
+
+```{r, out.width="100%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig6.jpg")
+```
+
+Whenever you have a question about the usage of a specific function, you may use the `help()` function or the `?` operator. If the explanation in the help menu is unclear to you, you may post your question on the Discussions Board of the class Quercus site.
+
+<!-- If you type in a function without `()`, you will see the contents of the function --- a program written in the R programming language that defines the function. Try `View`. We usually don’t use this option. Don't worry you don't understand the below. You will not be expected to understand the code like this.  -->
+
+<!-- ```{r} -->
+
+<!--   View -->
+
+<!-- ``` -->
+
+## R Script
+
+When you conduct an analysis in R, you should write a series of functions in [an R script file]{.red-text} and save it.
+
+Let's look at a simple example. Go to the class Quercus site and [download the following file]{.red-text}.
+
+```{r, eval=FALSE}
+	POL232_R_Lab1_Example1.R
+```
+
+`POL232_R_Lab1_Example1.R` is an R script. The file extension `.R` is used for R scripts. [Open this R script file in RStudio by choosing “File” $\rightarrow$ “Open File…” from the menu bar]{.red-text} or [clicking the open folder icon]{.red-text} (![](figures/RHB_Chap2_Icon_OpenFolder.png){width="4.0%"}) [at the upper left corner]{.red-text}. (Make sure you do NOT click the open folder icon (![](figures/RHB_Chap2_Icon_OpenFolder.png){width="4.0%"}) at the **Environment** tab on the upper right pane, because you cannot open an R script from there. Note that if you hover your cursor over the open folder icon at the upper left corner, the following message, "Open an existing file," should appear as shown below. If you hover your cursor over the icon at the **Environment** tab on the upper right, the description to appear is "Load Workspace.")
+
+![](figures/RHB_Ch2_Fig7.png)
+
+Then, this R script appears in the top left window of RStudio.
+
+```{r, out.width="100%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig8.jpg")
+```
+
+`POL232_R_Lab1_Example1.R` contains functions to draw a scatterplot using the `usstates2010` data frame. [Don't worry about these functions]{.red-text} for now. You will learn how to draw a similar scatterplot later in the semester.
+
+### Execute Functions from an R Script {#sec-execute-rscript}
+
+If you write a series of functions in an R script like this one, you can easily repeat your analysis. From an R script file, you can execute the functions.
+
+In `POL232_R_Lab1_Example1.R`, go to a line or highlight a line (or a set of lines), and then press `Ctrl + Enter` in Windows or `Command + Return` in Mac. Then, the functions chosen will be implemented in the R Console. Alternatively, you may click the "Run" icon (![](figures/RHB_Chap2_Icon_Run.png){width="4.5%"}).
+
+```{r, out.width="100%", echo=FALSE}
+  knitr::include_graphics("figures/RHB_Ch2_Fig9.jpg")
+```
+
+If you execute all the functions in `POL232_R_Lab1_Example1.R`, RStudio will draw the following scatterplot on the lower right pane.
+
+```{r, fig.width=6.0, fig.height=5.0, echo=FALSE}
+  setwd("/Users/kenichi/Desktop/TEMP")    
+  source("POL232_R_Lab1_Example1.R")
+```
+
+### Write Comments After `#`
+
+`POL232_R_Lab1_Example1.R` produced a scatterplot with a linear regression line for the relationship between the proportion of two-party vote share for a democratic gubernatorial candidate and the percent of Democratic identifiers, individuals who identify themselves as Democrats, across US states.
+
+Below is a copy of this R script. As I suggested above, don't worry about what these functions in the R script are doing. I am showing the content of the R script below only to explain how you can write comments in your R script file.
+
+```{r, eval=FALSE}
+# Estimate a simple linear regression model for the relationship
+# between the proportion of two-party vote share for a democratic gubernatorial
+# candidate (ranney3_gub_prop) and the percent of Democratic identifiers
+# (democrat), individuals who identify themselves as Democrats, across
+# US states, and assign its result to the object named "us."
+us <- lm(formula = ranney3_gub_prop*100 ~ democrat, data=usstates2010)
+
+# Draw a scatterplot using presidential election years.
+plot(usstates2010$democrat, usstates2010$ranney3_gub_prop*100,
+     type="n",
+     ylim=c(0,100), xlim=c(15, 75),
+     main="US Gubernatorial Elections",
+     ylab="Vote Share (%) of Dem Candidate",
+     xlab="Democratic Identifiers (%)",
+     cex.main=1.0, cex.lab=1.0, cex.axis=1.0)
+text(x=usstates2010$democrat, y=usstates2010$ranney3_gub_prop*100,
+	usstates2010$st, col="blue", cex=0.75)
+
+# Add a linear regression line.
+abline(a=us$coefficients[1],b=us$coefficients[2],
+	col="red", lwd=3)
+```
+
+In the above R script, you may notice that some descriptions are given after `#`. In an R script file, everything after `#` will not be executed by R. When R implements these functions, it ignores everything after `#`. Therefore, we can write comments after `#`.
+
+I suggest you [sufficiently annotate your R script]{.red-text} using `#` so that you can understand what you did when you come back to work on your R project after a while.
+
+### Always Write an R Script
+
+I suggest you [always create an R script file, write functions and comments in this R script, and save this script when you conduct analysis in R]{.red-text}, because this may be the most transparent and effective way to save and reproduce your analysis.
+
+Therefore, in every R lab session, I will ask you to write an R script file and submit it to Quercus by the end of the lab session to earn a participation mark, so that you can develop the habit of writing R scripts.
+
+<!-- ## When You Quit R: `quit()` or `q()` --- Don't Save Workspace Images  -->
+
+<!-- You may quit R by typing `quit()` or `q()` in **the R Console** or choose "File" $\rightarrow$ "Quit Session..." -->
+
+<!-- ```{r, eval=FALSE} -->
+
+<!--   quit() -->
+
+<!--   q() -->
+
+<!-- ``` -->
+
+<!-- When you quit, you may be asked the following question. -->
+
+<!-- ![](figures/RHB_Ch2_Fig10.png){width=25%} -->
+
+<!-- By clicking "Save," you can save all your R session in **a workspace image** (`.RData` file) and open it the next time you start R.  -->
+
+<!-- However, I do **NOT recommend** using this option. It is much better to record all your work in **an R script** and replicate all your work by executing the R script.  -->
+
+<!-- Using R scripts allows you to correct your mistakes easily, and all the steps of your work will be transparent. You may also allow others to replicate your work by running your R script.  -->
+
+<!-- [Always choose “Don’t Save” when you quit R]{.red-text} and [write an R script]{.red-text} instead. -->
+
+## Practic Writing an R Script
+
+<!-- Open RStudio once again.  -->
+
+Let's write a very simple R script to try some very basic (mathematical) operations in R.
+
+### How to Start a New R Script
+
+You may start a new file by choosing "File" $\rightarrow$ "New File" $\rightarrow$ "R Script" from the menu bar (left in the image below) or simply clicking the "New File" icon (![](figures/RHB_Chap2_Icon_New.png){width="4.0%"}) and choose "R Script" (right in the image below).
+
+![](figures/RHB_Ch2_Fig11.png){width="100%"}
+
+Once you create a new R script, you should of course save it. You can save it by choosing "File" from the pull down menu and then "Save As" (left in the image below) or clicking the save file icon (right in the image below).
+
+![](figures/RHB_Ch2_Fig11b.png){width="100%"}
+
+You should choose an informative name for your R script. For the current purpose, name your R script "`POL232_Lab1_YourLastName.R`."
+
+### Very Basic Math
+
+First, write the following mathematical operations in your R script and execute them from within the R script. See @sec-execute-rscript if you forget how to run functions from within an R script.
+
+```{r basic, eval=FALSE}
+  1 + 5     # Addition
+  2 - 3     # Subtraction
+  4 * 7     # Multiplication
+  2735 / 45 # Division
+  2^4       # Exponents
+  sqrt(16)  # Square root
+  abs(-5)   # Absolute value
+  1:100     # Sequence of integers from 1 to 100
+```
+
+Then, these mathematical operations will be carried out in **the R Console**. Each of them returns the output of the operation --- for example, `6` for `1 + 5`, and `-1` for `2 - 3`.
+
+Recall that R ignores everything after `#`, so you can annotate your R script after `#`.
+
+Next, write `5:100` as follows in your R script and execute it. You will get the output that follows --- a sequence of numbers from `5` to `100`.
+
+```{r}
+  5:100    # Sequence of integers from 5 to 100
+```
+
+[In the output, numbers in square brackets at the beginning of each line represent a position of the first entry of each line]{.red-text}. As you see in the above output, `5` is the first entry of `5:100`, and `24` is the 20th entry of `5:100`, `43` is the 39th, and so forth.
+
+### Create a Variable Using the Assignment Operator (`<-`)
+
+We can create **a variable** and assign a number or multiple numbers to **this variable** using the assignment operator, `<-`. First, let's assign a single number to **a variable**.
+
+For example, the following operation will assign the result of `1 + 5`, which is `6`, to **a variable** named `y`. Write this operation in your R script and then execute it (once again, see @sec-execute-rscript if you forget how to run a function from within an R script).
+
+```{r}
+  y <- 1 + 5  # The assignment operator, <-, will assign the values on the right-hand-side 
+              # to a variable named y.
+```
+
+Typing in the **variable** name in **the R Console** will print its content. Try this.
+
+```{r}
+  y
+```
+
+It returns `6`.
+
+Now write the following operation in your R script and execute it to create a different **variable** `x`.
+
+```{r}
+  x <- 7
+```
+
+Check its content by typing the **variable** name, `x`, in **the R Console**.
+
+```{r}
+  x
+```
+
+It returns `7`. You can overwrite **a variable** by assigning a different number to **the variable**. Write the following operation in your R script and execute it.
+
+```{r}
+  x <- 10
+```
+
+Now your `x` should be changed to `10`. Type in `x` in **the R Console** to confirm.
+
+```{r}
+  x
+```
+
+You can apply mathematical operations on **variables**. For example, write the following operations --- `sqrt()` to take a square root --- in your R script and execute them.
+
+```{r}
+  y + x        # Because y = 6 & x = 10, this is 16.
+  sqrt(y + x)  # This will take a square root of 16, which is 4.
+```
+
+You may assign the result of a mathematical operation on **variables** to another **variable**. Write the following operations in your R script and execute them.
+
+```{r}
+  z <- y + x  # z will be the result of y + x. Since y = 6 and x = 10, z = 16.
+
+  z           # Executing this from your R script is equivalent to typing in `z` into the R Console.
+```
+
+### See What's in Your Workspace (= Working Memory): `ls()` or `objects()`
+
+What you have created so far (called **"objects"**) in the current R session have been stored in the R's working memory, called **workspace**. You can see what is available in your **workspace** by executing `ls()` or `objects()` without arguments (= nothing in the parentheses). `objects()` may be more intuitive because anything you construct in R is called **an object**.
+
+Writ the following functions in your R script and execute them.
+
+```{r}
+  objects()  # This function will list everything in your workspace.
+```
+
+```{r}
+  ls()       # This function does the same thing as the objects() function.
+```
+
+You can also see what's stored in your **workspace** at the **Environment** tab at the upper right pane.
+
+![](figures/RHB_Ch2_Fig12.png){width="100%"}
+
+Note that everything you created and stored in your **workspace** will be gone, once you quit R. This is fine, as you can always recreate the objects you created in the current R session easily by running the functions recorded in your R script.
+
+<!-- ## Create a Vector: `c()`, `length()` -->
+
+<!-- Now we will construct a *vector*, which is a list of numbers ordered in line. \textcolor{red}{A vector is one of the most basic R objects}. -->
+
+<!-- `c()` is a function to combine its arguments to create a vector. For example, … -->
+
+<!-- ```{r} -->
+
+<!--   a <- c(10,15,18,25) -->
+
+<!--   b <- c(5,4,3,2) -->
+
+<!-- ``` -->
+
+<!-- Type in `a` and `b`, respectively, to see what each of them contains. -->
+
+<!-- ```{r} -->
+
+<!--   a -->
+
+<!--   b -->
+
+<!-- ``` -->
+
+<!-- We can implement arithmetic operations on vectors. For example, we can add each element of vectors `a` and `b` to create a new vector `d`. -->
+
+<!-- ```{r} -->
+
+<!--   d <- a + b -->
+
+<!-- ``` -->
+
+<!-- Check its contents by typing `d`. -->
+
+<!-- ```{r} -->
+
+<!--   d -->
+
+<!-- ``` -->
+
+<!-- We can subtract each element of vectors. -->
+
+<!-- ```{r} -->
+
+<!--   h <- a - b -->
+
+<!-- ``` -->
+
+<!-- Check the contents of `h`. -->
+
+<!-- ```{r} -->
+
+<!--   h -->
+
+<!-- ``` -->
+
+<!-- Multiply each element by a corresponding element. Check the contents of `f`. -->
+
+<!-- ```{r} -->
+
+<!--   f <- a * b -->
+
+<!--   f -->
+
+<!-- ``` -->
+
+<!-- You can get the length of vectors by the `length()` function. -->
+
+<!-- ```{r} -->
+
+<!--   length(b) -->
+
+<!-- ``` -->
+
+### Remove a Variable from Your Workspace: `remove()` or `rm()`
+
+If you want to remove or erase **a variable** from your **workspace**, use `remove()` or its abbreviation `rm()`. For example, `remove(x)` or `rm(x)` will erase `x` from your **workspace**. Write the following function in your R script and execute it.
+
+```{r}
+  remove(x)   # This function will remove the variable `x` from your workspace.
+```
+
+Type in `x` in the R Console to see that this **variable** is not available anymore. The error message will suggest that the **variable** x cannot be found.
+
+### Remove Everything: `remove(list=ls())` or `rm(list=ls())`
+
+If you want to remove everything from your workspace, you may use the following function. Write this function in your R script and execute it.
+
+```{r}
+  remove(list=ls())  # This will erase everything from your workspace.
+```
+
+Run `objects()` or `ls()` to see that everything is gone. `character{0}` means there is nothing in your workspace.
+
+```{r}
+  ls()
+```
+
+Make sure you save your R script. This R script may be used as your reference in your later work.
