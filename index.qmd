@@ -1,7 +1,0 @@
-# Preface {.unnumbered}
-
-This book is used for statistical software lab sessions in POL232 Introductory Quantitative Reasoning II at the Department of Political Science at the University of Toronto in Winter 2025.
-
-Quantitative social science research requires the use of statistical software. In POL232, you will learn an elementary use of statistical software called [*R*](http://www.r-project.org). In particular, you will use [*RStudio*](https://posit.co/download/rstudio-desktop/), a popular and accessible graphical user interface (GUI) to *R*.
-
-*R* is an open source software, and many [*packages*](https://cran.r-project.org/web/packages/) developed by contributors around the world are available for free. To make your learning of *R* accessible, this book will cover only a limited set of packages and their functionalities specifically used in POL232. Even if you have no experience of programming before, don't worry, as you will learn what you need in order to complete this class step by step, and we will focus only on a manageable set of functionalities of *R*. By the end of the semester, you are expected to be able to conduct an elementary quantitative data analysis and write a research paper based on it.
