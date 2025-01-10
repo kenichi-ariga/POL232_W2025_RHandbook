@@ -205,7 +205,7 @@ window.Quarto = {
   <li><a href="#browse-data-frame-view" id="toc-browse-data-frame-view" class="nav-link" data-scroll-target="#browse-data-frame-view"><span class="header-section-number">2.1.4</span> Browse Data Frame: <code>View()</code></a></li>
   <li><a href="#getting-help-for-functions-help-or" id="toc-getting-help-for-functions-help-or" class="nav-link" data-scroll-target="#getting-help-for-functions-help-or"><span class="header-section-number">2.1.5</span> Getting Help for Functions: <code>help()</code> or <code>?</code></a></li>
   </ul></li>
-  <li><a href="#r-script" id="toc-r-script" class="nav-link" data-scroll-target="#r-script"><span class="header-section-number">2.2</span> R Script</a>
+  <li><a href="#sec-rscript" id="toc-sec-rscript" class="nav-link" data-scroll-target="#sec-rscript"><span class="header-section-number">2.2</span> R Script</a>
   <ul class="collapse">
   <li><a href="#sec-execute-rscript" id="toc-sec-execute-rscript" class="nav-link" data-scroll-target="#sec-execute-rscript"><span class="header-section-number">2.2.1</span> Execute Functions from an R Script</a></li>
   <li><a href="#write-comments-after" id="toc-write-comments-after" class="nav-link" data-scroll-target="#write-comments-after"><span class="header-section-number">2.2.2</span> Write Comments After <code>#</code></a></li>
@@ -363,14 +363,14 @@ window.Quarto = {
 <!-- ``` -->
 </section>
 </section>
-<section id="r-script" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="r-script"><span class="header-section-number">2.2</span> R Script</h2>
+<section id="sec-rscript" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-rscript"><span class="header-section-number">2.2</span> R Script</h2>
 <p>When you conduct an analysis in R, you should write a series of functions in <span class="red-text">an R script file</span> and save it.</p>
-<p>Let’s look at a simple example. Go to the class Quercus site and <span class="red-text">download the following file</span>.</p>
+<p>Let’s look at a simple example. Go to <strong>the class Quercus site</strong> and <span class="red-text">download the following file</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    POL232_R_Lab1_Example1.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>POL232_R_Lab1_Example1.R</code> is an R script. The file extension <code>.R</code> is used for R scripts. <span class="red-text">Open this R script file in RStudio by choosing “File” <span class="math inline">\(\rightarrow\)</span> “Open File…” from the menu bar</span> or <span class="red-text">clicking the open folder icon</span> (<img src="figures/RHB_Chap2_Icon_OpenFolder.png" class="img-fluid" style="width:4.0%">) <span class="red-text">at the upper left corner</span>. (Make sure you do NOT click the open folder icon (<img src="figures/RHB_Chap2_Icon_OpenFolder.png" class="img-fluid" style="width:4.0%">) at the <strong>Environment</strong> tab on the upper right pane, because you cannot open an R script from there. Note that if you hover your cursor over the open folder icon at the upper left corner, the following message, “Open an existing file,” should appear as shown below. If you hover your cursor over the icon at the <strong>Environment</strong> tab on the upper right, the description to appear is “Load Workspace.”)</p>
+<p><code>POL232_R_Lab1_Example1.R</code> is an R script. The file extension <code>.R</code> is used for R scripts. <span class="red-text">Open this R script file in RStudio by choosing “File” <span class="math inline">\(\rightarrow\)</span> “Open File…” from the menu bar</span> or <span class="red-text">clicking the open folder icon</span> (<img src="figures/RHB_Ch2_Icon_OpenFolder.png" class="img-fluid" style="width:4.0%">) <span class="red-text">at the upper left corner</span>. (Make sure you do NOT click the open folder icon (<img src="figures/RHB_Ch2_Icon_OpenFolder.png" class="img-fluid" style="width:4.0%">) at the <strong>Environment</strong> tab on the upper right pane, because you cannot open an R script from there. Note that if you hover your cursor over the open folder icon at the upper left corner, the following message, “Open an existing file,” should appear as shown below. If you hover your cursor over the icon at the <strong>Environment</strong> tab on the upper right, the description to appear is “Load Workspace.”)</p>
 <p><img src="figures/RHB_Ch2_Fig7.png" class="img-fluid"></p>
 <p>Then, this R script appears in the top left window of RStudio.</p>
 <div class="cell">
@@ -386,7 +386,7 @@ window.Quarto = {
 <section id="sec-execute-rscript" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="sec-execute-rscript"><span class="header-section-number">2.2.1</span> Execute Functions from an R Script</h3>
 <p>If you write a series of functions in an R script like this one, you can easily repeat your analysis. From an R script file, you can execute the functions.</p>
-<p>In <code>POL232_R_Lab1_Example1.R</code>, go to a line or highlight a line (or a set of lines), and then press <code>Ctrl + Enter</code> in Windows or <code>Command + Return</code> in Mac. Then, the functions chosen will be implemented in the R Console. Alternatively, you may click the “Run” icon (<img src="figures/RHB_Chap2_Icon_Run.png" class="img-fluid" style="width:4.5%">).</p>
+<p>In <code>POL232_R_Lab1_Example1.R</code>, go to a line or highlight a line (or a set of lines), and then press <code>Ctrl + Enter</code> in Windows or <code>Command + Return</code> in Mac. Then, the functions chosen will be implemented in the R Console. Alternatively, you may click the “Run” icon (<img src="figures/RHB_Ch2_Icon_Run.png" class="img-fluid" style="width:4.5%">).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -461,7 +461,7 @@ window.Quarto = {
 <p>Let’s write a very simple R script to try some very basic (mathematical) operations in R.</p>
 <section id="how-to-start-a-new-r-script" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="how-to-start-a-new-r-script"><span class="header-section-number">2.3.1</span> How to Start a New R Script</h3>
-<p>You may start a new file by choosing “File” <span class="math inline">\(\rightarrow\)</span> “New File” <span class="math inline">\(\rightarrow\)</span> “R Script” from the menu bar (left in the image below) or simply clicking the “New File” icon (<img src="figures/RHB_Chap2_Icon_New.png" class="img-fluid" style="width:4.0%">) and choose “R Script” (right in the image below).</p>
+<p>You may start a new file by choosing “File” <span class="math inline">\(\rightarrow\)</span> “New File” <span class="math inline">\(\rightarrow\)</span> “R Script” from the menu bar (left in the image below) or simply clicking the “New File” icon (<img src="figures/RHB_Ch2_Icon_New.png" class="img-fluid" style="width:4.0%">) and choose “R Script” (right in the image below).</p>
 <p><img src="figures/RHB_Ch2_Fig11.png" class="img-fluid" style="width:100.0%"></p>
 <p>Once you create a new R script, you should of course save it. You can save it by choosing “File” from the pull down menu and then “Save As” (left in the image below) or clicking the save file icon (right in the image below).</p>
 <p><img src="figures/RHB_Ch2_Fig11b.png" class="img-fluid" style="width:100.0%"></p>

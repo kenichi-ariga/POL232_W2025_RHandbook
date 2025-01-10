@@ -14,7 +14,7 @@
     "href": "setup.html",
     "title": "1  Setting Up R & RStudio",
     "section": "",
-    "text": "1.1 In-Class Lab Session at SS561\nUNDER CONSTRUCTION",
+    "text": "1.1 In-Class Lab Session at SS561\nIn our computer lab (SS561), both RStudio and R are preinstalled on all lab computers. During the class time, you can simply login to a lab computer using your utorid and open RStudio.\nMake sure you open only RStudio. When you use RStudio, you don’t need to open R because opening RStudio quietly starts R behind its GUI.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up R & RStudio</span>"
     ]
@@ -30,8 +30,8 @@
     "objectID": "setup.html#download-and-install-r-rstudio",
     "href": "setup.html#download-and-install-r-rstudio",
     "title": "1  Setting Up R & RStudio",
-    "section": "1.2 Download and Install R & RStudio",
-    "text": "1.2 Download and Install R & RStudio\nUNDER CONSTRUCTION",
+    "section": "1.3 Download and Install R & RStudio",
+    "text": "1.3 Download and Install R & RStudio\nUNDER CONSTRUCTION",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up R & RStudio</span>"
     ]
@@ -40,8 +40,8 @@
     "objectID": "setup.html#use-rstudio-from-jupyterhub",
     "href": "setup.html#use-rstudio-from-jupyterhub",
     "title": "1  Setting Up R & RStudio",
-    "section": "1.3 Use RStudio from JupyterHub",
-    "text": "1.3 Use RStudio from JupyterHub\nUNDER CONSTRUCTION",
+    "section": "1.2 Use RStudio from JupyterHub",
+    "text": "1.2 Use RStudio from JupyterHub\nUNDER CONSTRUCTION",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up R & RStudio</span>"
     ]
@@ -102,5 +102,65 @@
     "title": "References",
     "section": "",
     "text": "References"
+  },
+  {
+    "objectID": "setup.html#sec-jupyterhub",
+    "href": "setup.html#sec-jupyterhub",
+    "title": "1  Setting Up R & RStudio",
+    "section": "1.2 Use RStudio from JupyterHub",
+    "text": "1.2 Use RStudio from JupyterHub\nAs a UofT student, you have an access to JupyterHub. While you can download and install R and RStudio on your computer, you may also use RStudio online from JupyterHub. In this option, you can avoid all the troubles in installing R and RStudio. Especially if you encounter any issues in installing R and RStudio on your computer, this will be a viable alternative.\nIn this section, I explain how to use RStudio online through JupyterHub.\nTo access RStudio from JupyterHub, go to https://datatools.utoronto.ca/ and choose RStudio.\n\n\n\n\n\nClick “Log On” and login using your utorid.\n\n\n\n\n\nThen, RStudio Server will open on your browser.\n\n\n\n\n\nNow you can use RStudio online.\n\n1.2.1 Prepare for POL232 on JupyterHub\nFirst, I suggest you create a folder for POL232.\nClick “New Folder” in the lower right pane.\n\n\n\n\n\n\n\n\n\nType in a name of the folder. Here I use “POL232.”\n\n\n\n\n\n\n\n\n\nThen, the new folder appears in the lower right pane.\n\n\n\n\n\n\n\n\n\nAs we use the datasets in POL232.RData, we first need to upload this file to RStudio on JupyterHub. If you haven’t downloaded it yet, go to the class Quercus site and download POL232.RData.\nThen, let’s upload POL232.RData to RStudio on JupyterHub.\nClick the “Upload” icon.\n\n\n\n\n\n\n\n\n\nThen, the following pop-up window appears. You first need to choose the target directory, which is a folder to which you upload POL232.RData.\nClick “Browse”…\n\n\n\n\n\n\n\n\n\nand choose the folder you just created. Here I choose the “POL232” folder.\n\n\n\n\n\n\n\n\n\nThen, select POL232.RData on your local drive to upload.\nClick “Browse”…\n\n\n\n\n\n\n\n\n\nLocate POL232.RData on your local drive and select it. Note that the location of POL232.RData on your local drive is different from mine shown below.\n\n\n\n\n\n\n\n\n\nHit “OK” to upload.\n\n\n\n\n\n\n\n\n\nThen, POL232.RData appears in the folder you created in the lower right pane (the “POL232” folder in my case shown below).\n\n\n\n\n\n\n\n\n\nYou can upload other files, if necessary, to RStudio on JupyterHub in the same way.\nFor example, to complete Section 2.2, you may want to upload POL232_R_Lab1_Example1.R.\nClick these files in your folder in the lower right pane to open them. Below I opened POL232_R_Lab1_Example1.R that I have uploaded.\n\n\n\n\n\n\n\n\n\nThen, you can use RStudio online from your browser, as you do in RStudio Desktop on lab computers.\n\n\n1.2.2 Save Output Online\nYou can save what you create in RStudio on JupyterHub online in the folder you just created. In the example shown below, I save a scatterplot produced by the functions in POL232_R_Lab1_Example1.R (see Section 2.2.1).\nTo save the scatterplot, first choose “Export” on the Plots tab in the lower right pane and choose “Save as Image”.\n\n\n\n\n\n\n\n\n\nThen, choose the folder to which you will save the plot and specify a name of the plot.\n\n\n\n\n\n\n\n\n\nClick the “Files” tab in the lower right pane, then you can see that the plot you have saved appears there.\n\n\n\n\n\n\n\n\n\nThese files saved in your folder is saved in your cloud account for JupyterHub. They will stay there after you log out, and you can use them when you come back to JupyterHub.\n\n\n1.2.3 Download Output\nYou can also download the files you saved online in RStudio on JupyterHub to your computer.\nCheck the file you want to download, and click “More.” Then, choose “Export” from the pull-down menu.\n\n\n\n\n\n\n\n\n\nIn the pop-up window, you may change a file name, if you want. Click “Download” to save the file on your computer locally.\n\n\n\n\n\n\n\n\n\nIn R lab sessions during the class time or tutorial sessions, you will be required to upload the R script or some other files that you create during the sessions to the class Querus site. For this purpose, you first need to download these files to your local computer, and then, you will upload these files to Quercus from the local computer.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up R & RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "setup.html#sec-install",
+    "href": "setup.html#sec-install",
+    "title": "1  Setting Up R & RStudio",
+    "section": "1.3 Download and Install R & RStudio",
+    "text": "1.3 Download and Install R & RStudio\nYou may also download and install R and RStudio onto your computer. While you will open RStudio only, you need to install both R and RStudio on your computer. This is because RStudio is an accessible GUI for R. When we open RStudio, it also quietly opens R behind.\nYou can download R onto your own computer from the CRAN (Comprehensive R Archive Network) mirror site closest to your place. You may choose one of the mirror sites listed under Canada.\n\n1.3.1 R for a Windows user\n\nClick “Download R for Windows.”\nChoose “base” (or “install R for the first time”) .\nClick “Download R 4.4.2 for Windows” (“4.4.2” here refers to the version number. If the version on this site is newer — the version number is greater than 4.4.2 — then it is the latest version so download that latest version instead).\nInstall R onto your computer.\n\n\n\n1.3.2 R and XQuartz for a Mac user\n\nClick “Download R for macOS.”\nDownload an appropriate release of R for your Mac. In particular, there are different releases for Apple silicon (M1,M2,…) Macs and older Intel Macs.\nInstall R onto your computer.\nMake sure you also download and install XQuartz in order to use graphic functions of R on your Mac computer.\n\n\n\n1.3.3 RStudio\nDownload and install RStudio Desktop from the RStudio’s website. Note that there is also a commercial license of R Studio Desktop Pro, but a free Open Source Edition will suffice our purpose. Choose installers appropriate for your operating system (OS).\n\n\n1.3.4 Update\nR and RStudio are frequently updated. You don’t need to update them during the current semester, but in your future use, it is recommended that you update the versions of R and RStudio occasionally.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up R & RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "setup.html#sec-rpackages",
+    "href": "setup.html#sec-rpackages",
+    "title": "1  Setting Up R & RStudio",
+    "section": "1.4 R Packages",
+    "text": "1.4 R Packages\nA package is a collection of user-written R functions, which you may download and install into your R library (i.e., onto your computer). There are thousands of packages available. You can see the currently available packages in this list.\nYou can see which packages were already downloaded in your R library in the Packages tab in the lower right pane of RStudio.\n\nYou may also use the library() function without an argument. If you run this function in RStudio, the R packages available tab will appear in the upper left pane.\n\n  library()\n\n\nIf this is the first time you use R, what you see here is the list of default R packages which came together with the installation of R. If we want to use R packages not included in this default list, we first need to download and install them on our computer.\n\n1.4.1 Install Package: install.packages()\nIn POL232, we are going to use a few packages included in tidyverse, a popular collection of multiple R packages. If you download and install tidyverse, multiple packages included therein will be installed on your computer. In particular, we will often use dplyr and ggplot2 from the tidyverse family of packages in this course.\nTo install a package, you can use the install.packages() function.\n\n  install.packages(\"tidyverse\")\n\nOr you may choose Install Packages… from the Tools menu.\n\nThen, type in the name of a package you want in the pop up window, and hit Install.\n\nAnother way to launch the above pop up window is to hit the Install icon () on the Packages tab at the lower right pane of RStudio.\n\n\n\n1.4.2 Load Package to Current R Session: library()\nTo use an R package you installed on your computer, you need to first load this package to your current R session using the library() function. For example, the following function loads all packages in tidyverse.\n\n  library(tidyverse)\n\nWe can now use the functions included in the family of tidyverse packages, including dplyr and ggplot2. These functions are accessible during your current R session.\nIf you quit R and restart an R session, you need to load tidyverse again by the library() function.\nNote that you don’t need to download and install the package you need every time you want to use it — once you have downloaded and installed it, it stays in your computer. You just need to load it into your current R session by the library() function, every time you start R.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up R & RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "basic.html#sec-rscript",
+    "href": "basic.html#sec-rscript",
+    "title": "2  Basic Use of RStudio",
+    "section": "2.2 R Script",
+    "text": "2.2 R Script\nWhen you conduct an analysis in R, you should write a series of functions in an R script file and save it.\nLet’s look at a simple example. Go to the class Quercus site and download the following file.\n\n    POL232_R_Lab1_Example1.R\n\nPOL232_R_Lab1_Example1.R is an R script. The file extension .R is used for R scripts. Open this R script file in RStudio by choosing “File” \\(\\rightarrow\\) “Open File…” from the menu bar or clicking the open folder icon () at the upper left corner. (Make sure you do NOT click the open folder icon () at the Environment tab on the upper right pane, because you cannot open an R script from there. Note that if you hover your cursor over the open folder icon at the upper left corner, the following message, “Open an existing file,” should appear as shown below. If you hover your cursor over the icon at the Environment tab on the upper right, the description to appear is “Load Workspace.”)\n\nThen, this R script appears in the top left window of RStudio.\n\n\n\n\n\n\n\n\n\nPOL232_R_Lab1_Example1.R contains functions to draw a scatterplot using the usstates2010 data frame. Don’t worry about these functions for now. You will learn how to draw a similar scatterplot later in the semester.\n\n2.2.1 Execute Functions from an R Script\nIf you write a series of functions in an R script like this one, you can easily repeat your analysis. From an R script file, you can execute the functions.\nIn POL232_R_Lab1_Example1.R, go to a line or highlight a line (or a set of lines), and then press Ctrl + Enter in Windows or Command + Return in Mac. Then, the functions chosen will be implemented in the R Console. Alternatively, you may click the “Run” icon ().\n\n\n\n\n\n\n\n\n\nIf you execute all the functions in POL232_R_Lab1_Example1.R, RStudio will draw the following scatterplot on the lower right pane.\n\n\n\n\n\n\n\n\n\n\n\n2.2.2 Write Comments After #\nPOL232_R_Lab1_Example1.R produced a scatterplot with a linear regression line for the relationship between the proportion of two-party vote share for a democratic gubernatorial candidate and the percent of Democratic identifiers, individuals who identify themselves as Democrats, across US states.\nBelow is a copy of this R script. As I suggested above, don’t worry about what these functions in the R script are doing. I am showing the content of the R script below only to explain how you can write comments in your R script file.\n\n# Estimate a simple linear regression model for the relationship\n# between the proportion of two-party vote share for a democratic gubernatorial\n# candidate (ranney3_gub_prop) and the percent of Democratic identifiers\n# (democrat), individuals who identify themselves as Democrats, across\n# US states, and assign its result to the object named \"us.\"\nus &lt;- lm(formula = ranney3_gub_prop*100 ~ democrat, data=usstates2010)\n\n# Draw a scatterplot using presidential election years.\nplot(usstates2010$democrat, usstates2010$ranney3_gub_prop*100,\n     type=\"n\",\n     ylim=c(0,100), xlim=c(15, 75),\n     main=\"US Gubernatorial Elections\",\n     ylab=\"Vote Share (%) of Dem Candidate\",\n     xlab=\"Democratic Identifiers (%)\",\n     cex.main=1.0, cex.lab=1.0, cex.axis=1.0)\ntext(x=usstates2010$democrat, y=usstates2010$ranney3_gub_prop*100,\n    usstates2010$st, col=\"blue\", cex=0.75)\n\n# Add a linear regression line.\nabline(a=us$coefficients[1],b=us$coefficients[2],\n    col=\"red\", lwd=3)\n\nIn the above R script, you may notice that some descriptions are given after #. In an R script file, everything after # will not be executed by R. When R implements these functions, it ignores everything after #. Therefore, we can write comments after #.\nI suggest you sufficiently annotate your R script using # so that you can understand what you did when you come back to work on your R project after a while.\n\n\n2.2.3 Always Write an R Script\nI suggest you always create an R script file, write functions and comments in this R script, and save this script when you conduct analysis in R, because this may be the most transparent and effective way to save and reproduce your analysis.\nTherefore, in every R lab session, I will ask you to write an R script file and submit it to Quercus by the end of the lab session to earn a participation mark, so that you can develop the habit of writing R scripts.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Basic Use of RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "setup.html#install-package-install.packages",
+    "href": "setup.html#install-package-install.packages",
+    "title": "1  Setting Up R & RStudio",
+    "section": "1.5 Install Package: install.packages()",
+    "text": "1.5 Install Package: install.packages()\nIn POL232, we are going to use a few packages included in tidyverse, a popular collection of multiple R packages. If you download and install tidyverse, multiple packages included therein will be installed on your computer. In particular, we will often use dplyr and ggplot2 from the tidyverse family of packages in this course.\nTo install a package, you can use the install.packages() function.\n\n  install.packages(\"tidyverse\")\n\nOr you may choose Install Packages… from the Tools menu.\n\nThen, type in the name of a package you want in the pop up window, and hit Install.\n\nAnother way to launch the above pop up window is to hit the Install icon () on the Packages tab at the lower right pane of RStudio.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up R & RStudio</span>"
+    ]
+  },
+  {
+    "objectID": "setup.html#load-package-to-current-r-session-library",
+    "href": "setup.html#load-package-to-current-r-session-library",
+    "title": "1  Setting Up R & RStudio",
+    "section": "1.6 Load Package to Current R Session: library()",
+    "text": "1.6 Load Package to Current R Session: library()\nTo use an R package you installed on your computer, you need to first load this package to R using the library() function. For example, the following function loads all packages in tidyverse.\n\n  library(tidyverse)\n\nWe can now use the functions included in the family of tidyverse packages, including dplyr and ggplot2. These functions are accessible during your current R session. If you quit R and restart an R session, you need to load tidyverse again to your search path by the library() function. Note that you don’t need to download and install the package you need every time you want to use it — once you have downloaded and installed it, it stays in your computer. You just need to load it into your current R session by the library() function, when you start the R session.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Setting Up R & RStudio</span>"
+    ]
   }
 ]
