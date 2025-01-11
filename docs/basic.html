@@ -194,12 +194,6 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive Statistics (1)</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./des2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Statistics (2)</span></span></a>
-  </div>
-</li>
     </ul>
     </div>
 </nav>
@@ -233,6 +227,7 @@ window.Quarto = {
   <li><a href="#remove-a-variable-from-your-workspace-remove-or-rm" id="toc-remove-a-variable-from-your-workspace-remove-or-rm" class="nav-link" data-scroll-target="#remove-a-variable-from-your-workspace-remove-or-rm"><span class="header-section-number">2.3.5</span> Remove a Variable from Your Workspace: <code>remove()</code> or <code>rm()</code></a></li>
   <li><a href="#remove-everything-removelistls-or-rmlistls" id="toc-remove-everything-removelistls-or-rmlistls" class="nav-link" data-scroll-target="#remove-everything-removelistls-or-rmlistls"><span class="header-section-number">2.3.6</span> Remove Everything: <code>remove(list=ls())</code> or <code>rm(list=ls())</code></a></li>
   </ul></li>
+  <li><a href="#when-you-quit-r-quit-or-q-dont-save-workspace-images" id="toc-when-you-quit-r-quit-or-q-dont-save-workspace-images" class="nav-link" data-scroll-target="#when-you-quit-r-quit-or-q-dont-save-workspace-images"><span class="header-section-number">2.4</span> When You Quit R: <code>quit()</code> or <code>q()</code> — Don’t Save Workspace Images</a></li>
   </ul>
 </nav>
     </div>
@@ -454,18 +449,6 @@ window.Quarto = {
 <h3 data-number="2.2.3" class="anchored" data-anchor-id="always-write-an-r-script"><span class="header-section-number">2.2.3</span> Always Write an R Script</h3>
 <p>I suggest you <span class="red-text">always create an R script file, write functions and comments in this R script, and save this script when you conduct analysis in R</span>, because this may be the most transparent and effective way to save and reproduce your analysis.</p>
 <p>Therefore, in every R lab session, I will ask you to write an R script file and submit it to Quercus by the end of the lab session to earn a participation mark, so that you can develop the habit of writing R scripts.</p>
-<!-- ## When You Quit R: `quit()` or `q()` --- Don't Save Workspace Images  -->
-<!-- You may quit R by typing `quit()` or `q()` in **the R Console** or choose "File" $\rightarrow$ "Quit Session..." -->
-<!-- ```{r, eval=FALSE} -->
-<!--   quit() -->
-<!--   q() -->
-<!-- ``` -->
-<!-- When you quit, you may be asked the following question. -->
-<!-- ![](figures/RHB_Ch2_Fig10.png){width=25%} -->
-<!-- By clicking "Save," you can save all your R session in **a workspace image** (`.RData` file) and open it the next time you start R.  -->
-<!-- However, I do **NOT recommend** using this option. It is much better to record all your work in **an R script** and replicate all your work by executing the R script.  -->
-<!-- Using R scripts allows you to correct your mistakes easily, and all the steps of your work will be transparent. You may also allow others to replicate your work by running your R script.  -->
-<!-- [Always choose “Don’t Save” when you quit R]{.red-text} and [write an R script]{.red-text} instead. -->
 </section>
 </section>
 <section id="sec-write-rscript" class="level2" data-number="2.3">
@@ -649,9 +632,26 @@ window.Quarto = {
 </div>
 </div>
 <p>Make sure you save your R script. This R script may be used as your reference in your later work.</p>
-
-
 </section>
+</section>
+<section id="when-you-quit-r-quit-or-q-dont-save-workspace-images" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="when-you-quit-r-quit-or-q-dont-save-workspace-images"><span class="header-section-number">2.4</span> When You Quit R: <code>quit()</code> or <code>q()</code> — Don’t Save Workspace Images</h2>
+<p>You may quit R by typing <code>quit()</code> or <code>q()</code> in <strong>the R Console</strong> or choose <strong>“File” <span class="math inline">\(\rightarrow\)</span> “Quit Session…”</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quit</span>()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">q</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When you quit, you <span class="red-text">may be asked the following question</span>.</p>
+<p><img src="figures/RHB_Ch2_Fig10.png" class="img-fluid" style="width:35.0%"></p>
+<p><span class="red-text">If you are NOT asked this question, then that is fine.</span> You can skip the following. Since this question is no longer asked in the recent versions of <strong>RStudio Desktop</strong>, you may not see this question when you quit your <strong>R session</strong>.</p>
+<p>However, I want to give the following explanations in case you encounter this question when you quit your <strong>R session</strong>, because this is a default behaviour of <strong>R</strong>, which is run quietly behind <strong>RStudio</strong>. There may be an occasion in which you will see this question.</p>
+<p>By clicking <strong>“Save,”</strong> you can save all your <strong>R session</strong> in <strong>a workspace image</strong> (<code>.RData</code> file) and can open it the next time you start <strong>R</strong>.</p>
+<p><span class="red-text">However, I do <strong>NOT recommend</strong> using this option.</span> It is much better to record all your work in <strong>an R script</strong> and replicate all your work by executing <strong>the R script</strong>.</p>
+<p>Using <strong>R scripts</strong> allows you to correct your mistakes easily, and all the steps of your work will be transparent. You may also allow others to replicate your work by running your R script.</p>
+<p><span class="red-text">Always choose “Don’t Save” when you quit R</span> and <span class="red-text">write an R script</span> instead.</p>
+
+
 </section>
 
 </main> <!-- /main -->

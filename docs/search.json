@@ -322,5 +322,15 @@
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Descriptive Statistics (2)</span>"
     ]
+  },
+  {
+    "objectID": "basic.html#when-you-quit-r-quit-or-q-dont-save-workspace-images",
+    "href": "basic.html#when-you-quit-r-quit-or-q-dont-save-workspace-images",
+    "title": "2  Basic Use of RStudio",
+    "section": "2.4 When You Quit R: quit() or q() — Don’t Save Workspace Images",
+    "text": "2.4 When You Quit R: quit() or q() — Don’t Save Workspace Images\nYou may quit R by typing quit() or q() in the R Console or choose “File” \\(\\rightarrow\\) “Quit Session…”\n\n  quit()\n\n  q()\n\nWhen you quit, you may be asked the following question.\n\nIf you are NOT asked this question, then that is fine. You can skip the following. Since this question is no longer asked in the recent versions of RStudio Desktop, you may not see this question when you quit your R session.\nHowever, I want to give the following explanations in case you encounter this question when you quit your R session, because this is a default behaviour of R, which is run quietly behind RStudio. There may be an occasion in which you will see this question.\nBy clicking “Save,” you can save all your R session in a workspace image (.RData file) and can open it the next time you start R.\nHowever, I do NOT recommend using this option. It is much better to record all your work in an R script and replicate all your work by executing the R script.\nUsing R scripts allows you to correct your mistakes easily, and all the steps of your work will be transparent. You may also allow others to replicate your work by running your R script.\nAlways choose “Don’t Save” when you quit R and write an R script instead.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Basic Use of RStudio</span>"
+    ]
   }
 ]
