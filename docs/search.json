@@ -292,5 +292,35 @@
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive Statistics (1)</span>"
     ]
+  },
+  {
+    "objectID": "des1.html#sec-preparation",
+    "href": "des1.html#sec-preparation",
+    "title": "3  Descriptive Statistics (1)",
+    "section": "",
+    "text": "3.1.1 Launch RStudio\n\nLaunch RStudio. Recall that you don’t need to launch R because RStudio quietly opens R behind its GUI.\nIf you use RStudio on JupyterHub and don’t remember how to use it, see Section 1.2.\n\n\n\n3.1.2 Load POL232..RData\n\nMake sure you load POL232.RData into your current R session. If you forget how to load POL232.RData into your current R session, see Section 2.1.3.\nIf you use RStudio on JupyterHub or your own computer, you are likely to have already downloaded and stored POL232.RData in your local folder either on your JupyterHub account or your own computer.\nHowever, if you use RStudio on a lab computer in SS 561, you first need to download POL232.RData from the class Quercus site because everything you saved on the lab computer is gone once you logged out from it.\n\n\n\n3.1.3 Prepare R Script\n\nI suggest you write everything you do in RStudio in an R script and run R functions from within the R script. If you need a refresher for R script, read Section 2.2 and Section 2.3.\nFor the current purpose, start a new R script and name it “POL232_Lab#_YourLastName.R” in which # is the number of the current lab session (e.g., POL232_Lab2_YourLastName.R, POL232_Lab3_YourLastName.R). See Section 2.3.1 for how to start a new R script.\n\n\n\n3.1.4 Load Packages\n\nFor the current chapter, you also need to load tidyverse package into your current R session (Section 1.4.2).\n\n\n  library(tidyverse)\n\n\nIf you don’t know about or forget about R packages, read Section 1.4.\nIf library(tidyverse) returns an error message suggesting there is no package called 'tidyverse', this means that tidyverse is not installed on your computer. In this case, you first need to install it. See Section 1.4.1 for how to dowonload and install R packages.\n\n\n\n3.1.5 Actually Write R Functions\n\nI suggest you actually write the R functions used below in your R script instead of copying and pasting them. By actually writing them and occasionally making mistakes and correcting them, you can get used to how RStudio works more quickly and effectively.\nIf you simply copy and paste them, you will not learn much about RStudio and will not get used to it.\nIn your R script, leave sufficient descriptions of the functions after the # sign (see Section 2.2.2) so that you can use your R script later as your reference when you conduct analysis using these R functions.\nThese descriptions are notes for yourself. Organize these descriptions/notes so that they are convenient for your futur use.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Descriptive Statistics (1)</span>"
+    ]
+  },
+  {
+    "objectID": "des2.html",
+    "href": "des2.html",
+    "title": "4  Descriptive Statistics (2)",
+    "section": "",
+    "text": "4.1 Preparation",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Descriptive Statistics (2)</span>"
+    ]
+  },
+  {
+    "objectID": "des2.html#preparation",
+    "href": "des2.html#preparation",
+    "title": "4  Descriptive Statistics (2)",
+    "section": "",
+    "text": "4.1.1 Before You Start\nBefore you start working on this chapter, you need to do the following. If you need a help for each step, see Section 3.1.\n\nLaunch RStudio.\nLoad POL232.RData into your current R session.\nPrepare an R Script to save all your work in this chapter. I suggest you name it “POL232_Lab#_YourLastName.R” in which # is the number of the current lab session.\nYou also need to load tidyverse package into your current R session (Section 1.4.2).\n\n\n  library(tidyverse)\n\n\n\n4.1.2 Actually Write R Functions\nI repeat below the suggestions I made in Section 3.1.5.\n\nI suggest you actually write the R functions used below in your R script instead of copying and pasting them. By actually writing them and occasionally making mistakes and correcting them, you can get used to how RStudio works more quickly and effectively.\nIf you simply copy and paste them, you will not learn much about RStudio and will not get used to it.\nIn your R script, leave sufficient descriptions of the functions after the # sign (see Section 2.2.2) so that you can use your R script later as your reference when you conduct analysis using these R functions.\nThese descriptions are notes for yourself. Organize these descriptions/notes so that they are convenient for your futur use.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Descriptive Statistics (2)</span>"
+    ]
   }
 ]

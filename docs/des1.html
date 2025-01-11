@@ -174,13 +174,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#preparation" id="toc-preparation" class="nav-link active" data-scroll-target="#preparation"><span class="header-section-number">3.1</span> Preparation</a>
+  <li><a href="#sec-preparation" id="toc-sec-preparation" class="nav-link active" data-scroll-target="#sec-preparation"><span class="header-section-number">3.1</span> Preparation</a>
   <ul class="collapse">
   <li><a href="#launch-rstudio" id="toc-launch-rstudio" class="nav-link" data-scroll-target="#launch-rstudio"><span class="header-section-number">3.1.1</span> Launch RStudio</a></li>
   <li><a href="#load-pol232..rdata" id="toc-load-pol232..rdata" class="nav-link" data-scroll-target="#load-pol232..rdata"><span class="header-section-number">3.1.2</span> Load POL232..RData</a></li>
   <li><a href="#prepare-r-script" id="toc-prepare-r-script" class="nav-link" data-scroll-target="#prepare-r-script"><span class="header-section-number">3.1.3</span> Prepare R Script</a></li>
   <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages"><span class="header-section-number">3.1.4</span> Load Packages</a></li>
-  <li><a href="#actually-write-r-functions" id="toc-actually-write-r-functions" class="nav-link" data-scroll-target="#actually-write-r-functions"><span class="header-section-number">3.1.5</span> Actually Write R Functions</a></li>
+  <li><a href="#sec-actually-write-rscript" id="toc-sec-actually-write-rscript" class="nav-link" data-scroll-target="#sec-actually-write-rscript"><span class="header-section-number">3.1.5</span> Actually Write R Functions</a></li>
   </ul></li>
   <li><a href="#histogram-ggplot-geom_histogram" id="toc-histogram-ggplot-geom_histogram" class="nav-link" data-scroll-target="#histogram-ggplot-geom_histogram"><span class="header-section-number">3.2</span> Histogram: ggplot() + geom_histogram()</a>
   <ul class="collapse">
@@ -228,8 +228,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="preparation" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="preparation"><span class="header-section-number">3.1</span> Preparation</h2>
+<section id="sec-preparation" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sec-preparation"><span class="header-section-number">3.1</span> Preparation</h2>
 <p><strong>Before you start</strong> working on this chapter, you need to do the following.</p>
 <section id="launch-rstudio" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="launch-rstudio"><span class="header-section-number">3.1.1</span> Launch RStudio</h3>
@@ -266,11 +266,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>If <code>library(tidyverse)</code> returns an error message suggesting <code>there is no package called 'tidyverse'</code>, this means that <code>tidyverse</code> is not installed on your computer. In this case, you first need to install it. See <a href="setup.html#sec-install-packages" class="quarto-xref"><span>Section 1.4.1</span></a> for how to dowonload and install <strong>R packages</strong>.</li>
 </ul>
 </section>
-<section id="actually-write-r-functions" class="level3" data-number="3.1.5">
-<h3 data-number="3.1.5" class="anchored" data-anchor-id="actually-write-r-functions"><span class="header-section-number">3.1.5</span> Actually Write R Functions</h3>
+<section id="sec-actually-write-rscript" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="sec-actually-write-rscript"><span class="header-section-number">3.1.5</span> Actually Write R Functions</h3>
 <ul>
-<li><p>I suggest you <span class="red-text">actually write</span> <strong>the R functions</strong> used below in your <strong>R script</strong> instead of copying and pasting them. By actually writing them and occasionally making mistakes and correcting them, you can learn how <strong>R languages</strong> work more effectively.</p></li>
-<li><p>In your <strong>R script</strong>, leave descriptions of the functions after <strong>the <code>#</code> sign</strong> (see <a href="basic.html#sec-r-comments" class="quarto-xref"><span>Section 2.2.2</span></a>). Then, you can use your <strong>R script</strong> later <span class="red-text">as your reference</span> when you conduct analysis using these <strong>R functions</strong>.</p></li>
+<li><p>I suggest you <span class="red-text">actually write</span> <strong>the R functions</strong> used below in your <strong>R script</strong> instead of copying and pasting them. By <span class="red-text">actually writing them</span> and <span class="red-text">occasionally making mistakes and correcting them</span>, you can get used to how <strong>RStudio</strong> works more quickly and effectively.</p></li>
+<li><p>If you <span class="red-text">simply copy and paste</span> them, you will <span class="red-text">not learn much</span> about <strong>RStudio</strong> and will <span class="red-text">not get used to it</span>.</p></li>
+<li><p>In your <strong>R script</strong>, leave <span class="red-text">sufficient descriptions</span> of the functions after <strong>the <code>#</code> sign</strong> (see <a href="basic.html#sec-r-comments" class="quarto-xref"><span>Section 2.2.2</span></a>) so that you can use your <strong>R script</strong> later <span class="red-text">as your reference</span> when you conduct analysis using these <strong>R functions</strong>.</p></li>
+<li><p>These descriptions are <span class="red-text">notes for yourself</span>. Organize these descriptions/notes so that they are <span class="red-text">convenient for your futur use</span>.</p></li>
 </ul>
 </section>
 </section>
