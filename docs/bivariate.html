@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; Bivariate Analysis – POL232 R Handbook (W2025)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./des2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./bivariate.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bivariate Analysis</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">POL232 R Handbook (W2025)</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setting Up R &amp; RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./basic.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Basic Use of RStudio</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./des1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive Statistics (1)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./des2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Statistics (2)</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bivariate.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bivariate Analysis</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#sec-mosaic-plot" id="toc-sec-mosaic-plot" class="nav-link active" data-scroll-target="#sec-mosaic-plot"><span class="header-section-number">5.1</span> Mosaic Plot</a>
+  <ul class="collapse">
+  <li><a href="#new-package-ggmosaic" id="toc-new-package-ggmosaic" class="nav-link" data-scroll-target="#new-package-ggmosaic"><span class="header-section-number">5.1.1</span> New Package: <code>ggmosaic</code></a></li>
+  <li><a href="#prepare-variables" id="toc-prepare-variables" class="nav-link" data-scroll-target="#prepare-variables"><span class="header-section-number">5.1.2</span> Prepare Variables</a></li>
+  <li><a href="#draw-a-mosaic-plot-ggplot-geom_mosaic" id="toc-draw-a-mosaic-plot-ggplot-geom_mosaic" class="nav-link" data-scroll-target="#draw-a-mosaic-plot-ggplot-geom_mosaic"><span class="header-section-number">5.1.3</span> Draw a Mosaic Plot: <code>ggplot() + geom_mosaic()</code></a></li>
+  <li><a href="#remove-na-drop_na" id="toc-remove-na-drop_na" class="nav-link" data-scroll-target="#remove-na-drop_na"><span class="header-section-number">5.1.4</span> Remove NA: <code>drop_na()</code></a></li>
+  <li><a href="#other-edits-show.legend-scale_fill_manual" id="toc-other-edits-show.legend-scale_fill_manual" class="nav-link" data-scroll-target="#other-edits-show.legend-scale_fill_manual"><span class="header-section-number">5.1.5</span> Other Edits: <code>show.legend</code>, <code>scale_fill_manual()</code></a></li>
+  </ul></li>
+  <li><a href="#cross-tabulation" id="toc-cross-tabulation" class="nav-link" data-scroll-target="#cross-tabulation"><span class="header-section-number">5.2</span> Cross Tabulation</a>
+  <ul class="collapse">
+  <li><a href="#cross-tabulation-in-number-of-observations-table" id="toc-cross-tabulation-in-number-of-observations-table" class="nav-link" data-scroll-target="#cross-tabulation-in-number-of-observations-table"><span class="header-section-number">5.2.1</span> Cross Tabulation in Number of Observations: <code>table()</code></a></li>
+  <li><a href="#cross-tabulation-in-proportion-prop_table" id="toc-cross-tabulation-in-proportion-prop_table" class="nav-link" data-scroll-target="#cross-tabulation-in-proportion-prop_table"><span class="header-section-number">5.2.2</span> Cross Tabulation in Proportion: <code>prop_table()</code></a></li>
+  <li><a href="#add-column-or-row-totals-to-crosstab" id="toc-add-column-or-row-totals-to-crosstab" class="nav-link" data-scroll-target="#add-column-or-row-totals-to-crosstab"><span class="header-section-number">5.2.3</span> Add Column (or Row) Totals to Crosstab</a></li>
+  <li><a href="#round-values-in-crosstab" id="toc-round-values-in-crosstab" class="nav-link" data-scroll-target="#round-values-in-crosstab"><span class="header-section-number">5.2.4</span> Round Values in Crosstab</a></li>
+  <li><a href="#cross-tabulation-in-percentage" id="toc-cross-tabulation-in-percentage" class="nav-link" data-scroll-target="#cross-tabulation-in-percentage"><span class="header-section-number">5.2.5</span> Cross Tabulation in Percentage</a></li>
+  <li><a href="#sequential-operations-on-r-objects" id="toc-sequential-operations-on-r-objects" class="nav-link" data-scroll-target="#sequential-operations-on-r-objects"><span class="header-section-number">5.2.6</span> Sequential Operations on R Objects</a></li>
+  </ul></li>
+  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot"><span class="header-section-number">5.3</span> Scatterplot</a>
+  <ul class="collapse">
+  <li><a href="#basic-scatterplot-ggplot-geom_point" id="toc-basic-scatterplot-ggplot-geom_point" class="nav-link" data-scroll-target="#basic-scatterplot-ggplot-geom_point"><span class="header-section-number">5.3.1</span> Basic Scatterplot: <code>ggplot() + geom_point()</code></a></li>
+  <li><a href="#scatterplot-by-name-of-observations-ggplot-geom_text" id="toc-scatterplot-by-name-of-observations-ggplot-geom_text" class="nav-link" data-scroll-target="#scatterplot-by-name-of-observations-ggplot-geom_text"><span class="header-section-number">5.3.2</span> Scatterplot by Name of Observations: <code>ggplot() + geom_text()</code></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bivariate Analysis</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Before you start</strong> working on this chapter, you need to do the following. If you need a help for each step, see <a href="des1.html#sec-preparation" class="quarto-xref"><span>Section 3.1</span></a>.</p>
+<ul>
+<li><p>Launch <strong>RStudio</strong>.</p></li>
+<li><p>Load <code>POL232.RData</code> into your current <strong>R</strong> session.</p></li>
+<li><p>Prepare an <strong>R Script</strong> to save all your work in this chapter. I suggest you name it “<code>POL232_Lab#_YourLastName.R</code>” in which <code>#</code> is the number of the current lab session.</p></li>
+<li><p>You also need to load <code>tidyverse</code> package into your current <strong>R</strong> session (<a href="setup.html#sec-load-packages" class="quarto-xref"><span>Section 1.4.2</span></a>).</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>I suggest you <span class="red-text">actually write</span> <strong>the R functions</strong> used below in your <strong>R script</strong> instead of copying and pasting them. See <a href="des1.html#sec-actually-write-rscript" class="quarto-xref"><span>Section 3.1.5</span></a> for <span class="red-text">why</span>.</li>
+</ul>
+<section id="sec-mosaic-plot" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sec-mosaic-plot"><span class="header-section-number">5.1</span> Mosaic Plot</h2>
+<p>When the two variables are both <strong>categorical variables</strong>, we may use <strong>a mosaic plot</strong> to visualize the relationship.</p>
+<section id="new-package-ggmosaic" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="new-package-ggmosaic"><span class="header-section-number">5.1.1</span> New Package: <code>ggmosaic</code></h3>
+<p>To draw <strong>a mosaic plot</strong>, we also need <span class="red-text">a new package <code>ggmosaic</code></span>, which works with <strong>the <code>ggplot()</code> function</strong>.</p>
+<p>Install <code>ggmosaic</code> first if it has not been downloaded and installed on your computer. See <a href="setup.html#sec-install-packages" class="quarto-xref"><span>Section 1.4.1</span></a> for how to install <strong>an R package</strong>.</p>
+<p>Then, load <code>ggmosaic</code> (<a href="setup.html#sec-load-packages" class="quarto-xref"><span>Section 1.4.2</span></a>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">library</span>(ggmosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="prepare-variables" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="prepare-variables"><span class="header-section-number">5.1.2</span> Prepare Variables</h3>
+<p>We are going to draw <strong>a mosaic plot</strong> for <code>satisfied_fedgovt</code> and <code>percep_economy_cps</code> from the <code>ces2019</code> data frame. This can be considered as a simple test of the theory of economic voting. In this analysis, <code>percep_economy_cps</code> is the independent variable, and <code>satisfied_fedgovt</code> is the dependent variable.</p>
+<p>Before visualizing the relationship, we first <span class="red-text">edit these two variables</span>. Recall what we did for <code>percep_economy_cps</code> in <a href="des2.html#sec-bar-chart-edit-vars" class="quarto-xref"><span>Section 4.2</span></a>. We change the names of their categories or <code>levels</code> to simpler ones (<a href="des2.html#sec-change-factor-levels-names" class="quarto-xref"><span>Section 4.2.6</span></a>) and change the order of the categories or <code>levels</code> (<a href="des2.html#sec-change-factor-levels-order" class="quarto-xref"><span>Section 4.2.5</span></a>).</p>
+<p>To change the names of the categories or <code>levels</code>, we use <strong>the <code>fct_recode()</code> function</strong> (<a href="des2.html#sec-change-factor-levels-names" class="quarto-xref"><span>Section 4.2.6</span></a>). Recall its <span class="red-text">basic syntax</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fct_recode</span>(factor_variable, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">"New Name of Level 1"</span> <span class="ot">=</span> <span class="st">"Original Name of Level 1"</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>              <span class="st">"New Name of Level 2"</span> <span class="ot">=</span> <span class="st">"Original Name of Level 2"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>              <span class="st">"New Name of Level 3"</span> <span class="ot">=</span> <span class="st">"Original Name of Level 3"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To change the order of categories or <code>levels</code>, we use <strong>the <code>fct_relevel()</code> function</strong> (<a href="des2.html#sec-change-factor-levels-order" class="quarto-xref"><span>Section 4.2.5</span></a>). Recall the following <span class="red-text">basic syntax</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>      <span class="fu">fct_relevel</span>(factor_variable, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">"First Level"</span>, <span class="st">"Second Level"</span>, <span class="st">"Third Level"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s edit <code>precep_economy_cps</code> using <strong>these functions</strong>. In <a href="des2.html#sec-bar-chart-edit-vars" class="quarto-xref"><span>Section 4.2</span></a>, we created a new variable to reflect the edits, but here we instead <span class="red-text">update</span> <code>percep_economy_cps</code> <span class="red-text">with these edits</span>. In the following code, <strong>the left hand side of <code>=</code> in the <code>mutate()</code> function</strong> is <code>percep_economy_cps</code> instead of <code>precep_economy_cps2</code> or <code>percep_economy_cps3</code> used in the previous lab session. In this way, we can <span class="red-text">update the content of</span> <code>percep_economy_cps</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>ces2019 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(ces2019,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">percep_economy_cps =</span> <span class="fu">fct_recode</span>(percep_economy_cps,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Worse"</span> <span class="ot">=</span> <span class="st">"(2) Worse"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Same"</span> <span class="ot">=</span> <span class="st">"(3) About the same"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Better"</span> <span class="ot">=</span> <span class="st">"(1) Better"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ces2019 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(ces2019,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">percep_economy_cps =</span> <span class="fu">fct_relevel</span>(percep_economy_cps,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Worse"</span>, <span class="st">"Same"</span>, <span class="st">"Better"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We also <span class="red-text">edit</span> <code>satisfied_fedgovt</code> as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ces2019 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(ces2019,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">satisfied_fedgovt =</span> <span class="fu">fct_recode</span>(satisfied_fedgovt,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Not At All"</span> <span class="ot">=</span> <span class="st">"(4) Not satisfied at all"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Not Very"</span> <span class="ot">=</span> <span class="st">"(3) Not very satisfied"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Fairly"</span> <span class="ot">=</span> <span class="st">"(2) Fairly satisfied"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Very"</span> <span class="ot">=</span> <span class="st">"(1) Very satisfied"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ces2019 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(ces2019, </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">satisfied_fedgovt =</span> <span class="fu">fct_relevel</span>(satisfied_fedgovt, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Not At All"</span>, <span class="st">"Not Very"</span>, <span class="st">"Fairly"</span>, <span class="st">"Very"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="draw-a-mosaic-plot-ggplot-geom_mosaic" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="draw-a-mosaic-plot-ggplot-geom_mosaic"><span class="header-section-number">5.1.3</span> Draw a Mosaic Plot: <code>ggplot() + geom_mosaic()</code></h3>
+<p>Let’s draw <strong>a mosaic plot</strong> for <code>percep_economy_cps</code> and <code>satisfied_govt</code>. Below is <span class="red-text">the minimum specification</span> for <strong>the <code>ggplot() + geom_mosaic()</code> functions</strong>. Read the comments in the code below for an explanation for <span class="red-text">the basic syntax</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Specify the data frame used inside ggplot(). </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ces2019) <span class="sc">+</span>   <span class="co"># aes() is now specified in geom_mosaic() instead of ggplot().</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>( <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(percep_economy_cps),  <span class="co"># x = product(independent_variable)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> satisfied_fedgovt) )       <span class="co"># fill = dependent_variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="remove-na-drop_na" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="remove-na-drop_na"><span class="header-section-number">5.1.4</span> Remove NA: <code>drop_na()</code></h3>
+<p><strong>The mosaic plot</strong> drawn above includes <span class="red-text">missing observations</span> (<code>NA</code>). As we did before in <a href="des2.html#sec-remove-na" class="quarto-xref"><span>Section 4.2.7</span></a>, let’s remove these <span class="red-text">missing observations</span> using <strong>the <code>drop_na()</code> function</strong>. Recall <span class="red-text">the basic syntax</span> of <strong>the <code>drop_na()</code> function</strong> below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(name_of_data_frame, name_of_variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>The <code>drop_na()</code> function</strong> looks for the observations for which the variable in the second argument (<code>name_of_variable</code> above) is missing (<code>NA</code>) and removes these observations from the data frame in the first argument (<code>name_of_data_frame</code>). So in the code below, <strong>the <code>drop_na()</code> function</strong> looks for the observations in <code>ces2019</code> for which <code>percep_economy_cps</code> is missing (<code>NA</code>), and removes these observations from <code>ces2019</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(ces2019, percep_economy_cps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use <code>drop_na(ces2019, percep_economy_cps)</code> instead of <code>ces2019</code> inside the <code>ggplot()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># drop_na() here removes the missing observations (NA) for percep_economy_cps from ces2019.</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( <span class="fu">drop_na</span>(ces2019, percep_economy_cps) ) <span class="sc">+</span>    </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>( <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(percep_economy_cps),  </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> satisfied_fedgovt) )        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>As you see in the above plot, now <span class="red-text">the missing observations</span> for <code>percep_economy_cps</code> were removed, but <span class="red-text">those</span> for <code>satisfied_fedgovt</code> still remain. To remove <span class="red-text">the missing observations</span> for <code>satisfied_fedgovt</code>, we also need to include this variable in <strong>the <code>drop_na()</code> function</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># drop_na() here removes the missing observations (NA) for both percep_economy_cps </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># and satisfied_fedgovt from ces2019.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( <span class="fu">drop_na</span>(ces2019, percep_economy_cps, satisfied_fedgovt) ) <span class="sc">+</span>    </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>( <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(percep_economy_cps),  </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">fill =</span> satisfied_fedgovt) )        </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now the missing observations for <code>satisfied_fedgove</code> are removed as well.</p>
+</section>
+<section id="other-edits-show.legend-scale_fill_manual" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="other-edits-show.legend-scale_fill_manual"><span class="header-section-number">5.1.5</span> Other Edits: <code>show.legend</code>, <code>scale_fill_manual()</code></h3>
+<p>Perhaps we don’t need <strong>the legend</strong>, as the category names are also shown on the vertical axis. We can <span class="red-text">remove</span> <strong>the legend</strong> by specifying <code>show.legend = FALSE</code> in <strong>the <code>geom_mosaic()</code> function</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">drop_na</span>(ces2019, percep_economy_cps, satisfied_fedgovt)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(percep_economy_cps), <span class="at">fill =</span> satisfied_fedgovt), </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">show.legend =</span> <span class="cn">FALSE</span>)          <span class="co"># show.legend = FALSE removes the legend.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can also specify <span class="red-text">the colors of the mosaic tiles</span> by adding <strong>the <code>scale_fill_manual()</code> function</strong>. Recall that you can look up <span class="red-text">the names of the colors used in R</span> online, for example, <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">here</a> and <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">here</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">drop_na</span>(ces2019, percep_economy_cps, satisfied_fedgovt)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(percep_economy_cps), <span class="at">fill =</span> satisfied_fedgovt), </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>          <span class="co"># Below, you need to specify the colors for each category of your dependent variable.</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>          <span class="co"># Don't forget to include the names of the colors in c().</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"lightsteelblue2"</span>, <span class="st">"steelblue1"</span>, <span class="st">"steelblue3"</span>, <span class="st">"steelblue4"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+<!-- For clarity, you may want to remove the gray background by `theme_bw()` function without arguments. -->
+<!-- ```{r, fig.width=5.5, fig.height=3.5} -->
+<!-- ggplot(drop_na(ces2019, percep_economy_cps, satisfied_fedgovt)) + -->
+<!--   geom_mosaic(aes(x = product(percep_economy_cps), fill = satisfied_fedgovt),  -->
+<!--               show.legend = FALSE) + -->
+<!--   scale_fill_manual(values = c("lightsteelblue2", "steelblue1", "steelblue3", "steelblue4")) + -->
+<!--   theme_bw()     # theme_bw() removes the gray background. -->
+<!-- ``` -->
+<p>You can of course use <strong>the functions you learned before</strong> <span class="red-text">to further edit the plot</span>. For example, below I added <span class="red-text">the labels for both <code>y</code> and <code>x</code> axes</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">drop_na</span>(ces2019, percep_economy_cps, satisfied_fedgovt)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mosaic</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">product</span>(percep_economy_cps), <span class="at">fill =</span> satisfied_fedgovt), </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"lightsteelblue2"</span>, <span class="st">"steelblue1"</span>, <span class="st">"steelblue3"</span>, <span class="st">"steelblue4"</span>)) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Satisfied with Government"</span>) <span class="sc">+</span>   <span class="co"># Change the label at y-axis.</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Perception of Economy"</span>)         <span class="co"># Change the label at x-axis.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="432"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cross-tabulation" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="cross-tabulation"><span class="header-section-number">5.2</span> Cross Tabulation</h2>
+<p><strong>A mosaic plot</strong> is a wonderful visualization, but we may also want to know the actual <span class="red-text">proportions</span> of each tile. For this purpose, we may use <strong>R</strong> to produce <strong>a cross tabulation</strong>. One way to do requires two steps. First, we use <strong>the <code>table()</code> function</strong> to produce <strong>a cross tabulation</strong> in terms of <span class="red-text">the number of observations</span>. Then, we apply <strong>the <code>prop.table()</code> function</strong> to transform the output of <strong>the <code>table()</code> function</strong> to one in terms of <span class="red-text">proportion</span> or <span class="red-text">percentage</span>.</p>
+<section id="cross-tabulation-in-number-of-observations-table" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="cross-tabulation-in-number-of-observations-table"><span class="header-section-number">5.2.1</span> Cross Tabulation in Number of Observations: <code>table()</code></h3>
+<p><span class="red-text">A basic syntax</span> of <strong>the <code>table()</code> function</strong> is as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(variable_in_rows, variable_in_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In other words, <em>the first argument</em> of <strong>the <code>table()</code> function</strong> is <span class="red-text">the variable that will appear in the rows</span>, and <em>the second argument</em> is <span class="red-text">the variable in the columns</span>. For the current purpose of examining the theory of economic voting, we want our dependent variable to appear in rows and independent variable in columns. Hence, <span class="red-text">the basic syntax</span> of <strong>the <code>table()</code> function</strong> may also be written as below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(dependent_variable, independent_variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s apply this function to <code>percep_economy_cps</code> and <code>satisfied_fedgovt</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(ces2019<span class="sc">$</span>satisfied_fedgovt,   <span class="co"># table(dependent_variable, independent_variable)</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>        ces2019<span class="sc">$</span>percep_economy_cps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+             Worse Same Better
+  Not At All   673  275     47
+  Not Very     399  554    178
+  Fairly       214  836    483
+  Very          17   67    100</code></pre>
+</div>
+</div>
+<p>You may have noticed that <strong>the categories of the dependent variable</strong> appear in rows <span class="red-text">in the order of the categories (or <code>levels</code>) from top to bottom</span>, which is <span class="red-text">the opposite to the order of appearance in</span> <strong>the mosaic plot</strong>. To show the dependent variable in the same order as in the mosaic plot, we need to <span class="red-text">reverse the order of categories (<code>levels</code>)</span> of <code>satisfied_fedgovt</code>. Let’s create a new variable <code>satisfied_fedgovt2</code> in which the order of categories (<code>levels</code>) is reversed. See <a href="des2.html#sec-change-factor-levels-order" class="quarto-xref"><span>Section 4.2.5</span></a> for how to change the order of categories (<code>levels</code>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ces2019 <span class="ot">&lt;-</span> <span class="fu">mutate</span>( ces2019, </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">satisfied_fedgovt2 =</span> <span class="fu">fct_relevel</span>(satisfied_fedgovt, </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Very"</span>, <span class="st">"Fairly"</span>, <span class="st">"Not Very"</span>, <span class="st">"Not At All"</span> ) ) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check the new order by <strong>the <code>levels()</code> function</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(ces2019<span class="sc">$</span>satisfied_fedgovt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Very"       "Fairly"     "Not Very"   "Not At All"</code></pre>
+</div>
+</div>
+<p>Apply <strong>the <code>table()</code> function</strong> to <code>percep_economy_cps</code> and the new variable <code>satisfied_fedgovt2</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>( ces2019<span class="sc">$</span>satisfied_fedgovt2,      <span class="co"># table(dependent_variable, independent_variable)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>         ces2019<span class="sc">$</span>percep_economy_cps )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+             Worse Same Better
+  Very          17   67    100
+  Fairly       214  836    483
+  Not Very     399  554    178
+  Not At All   673  275     47</code></pre>
+</div>
+</div>
+<p>Now <span class="red-text">the categories of <code>satisfied_fedgovt2</code> appear in the same way</span> as in its <strong>mosaic plot</strong>.</p>
+</section>
+<section id="cross-tabulation-in-proportion-prop_table" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="cross-tabulation-in-proportion-prop_table"><span class="header-section-number">5.2.2</span> Cross Tabulation in Proportion: <code>prop_table()</code></h3>
+<p>Since <strong>the crosstab</strong> derived above is in <span class="red-text">number of observations</span>, let’s convert it to one in terms of <span class="red-text">proportion</span>. We can do this by using <strong>the <code>prop.table()</code> function</strong> with <span class="red-text">the output of</span> <strong>the <code>table()</code> function</strong> as <em>its argument</em>.</p>
+<p>For this purpose, first <span class="red-text">assign the output of</span> <strong>the <code>table()</code> function</strong> <span class="red-text">to a new object</span> called <code>tab</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use the assignment operator ("&lt;-") to assign the output of the table() function </span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>( ces2019<span class="sc">$</span>satisfied_fedgovt2,   <span class="co"># to a new object named "tab." </span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>              ces2019<span class="sc">$</span>percep_economy_cps )   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, use <strong>the <code>prop.table()</code> function</strong> as below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>      <span class="co"># The first argument of prop.table() is the output of the table() function.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>      <span class="co"># The second argument specifies the type of proportion to be derived.</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(tab, <span class="dv">2</span>)  <span class="co"># The second argument 2 = column proportions are calculated.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+                  Worse       Same     Better
+  Very       0.01304682 0.03868360 0.12376238
+  Fairly     0.16423638 0.48267898 0.59777228
+  Not Very   0.30621642 0.31986143 0.22029703
+  Not At All 0.51650038 0.15877598 0.05816832</code></pre>
+</div>
+</div>
+<p>Above we derived <strong>the crosstab</strong> in terms of <span class="red-text">proportion</span>. <em>The second argument</em> of <strong>the <code>prop.table()</code> function</strong> specifies <span class="red-text">the type of proportion</span> to be derived. If this is <code>2</code>, <strong>the <code>prop.table()</code> function</strong> calculates <strong>column proportions</strong> — if we add up the proportions within each column, they will sum to one. This is what we want for our present purpose.</p>
+<p>But we can also compute <strong>row proportions</strong> — if we add up the proportions within each row, they will sum to one. We can do this by specifying <code>1</code> in <em>the second argument</em> of <strong>the <code>prop.table()</code> function</strong>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(tab, <span class="dv">1</span>)  <span class="co"># The second argument 1 = row proportions are calculated.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+                  Worse       Same     Better
+  Very       0.09239130 0.36413043 0.54347826
+  Fairly     0.13959556 0.54533594 0.31506849
+  Not Very   0.35278515 0.48983201 0.15738285
+  Not At All 0.67638191 0.27638191 0.04723618</code></pre>
+</div>
+</div>
+<p>Without <em>the second argument</em>, <strong>the <code>prop.table()</code> function</strong> calculates <strong>cell proportions</strong> — if we add up the proportions of all of the cells, they will sum to one.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(tab) <span class="co"># Without second argument = cell proportions are calculated.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+                   Worse        Same      Better
+  Very       0.004423627 0.017434296 0.026021337
+  Fairly     0.055685662 0.217538381 0.125683060
+  Not Very   0.103825137 0.144158210 0.046317981
+  Not At All 0.175123601 0.071558678 0.012230029</code></pre>
+</div>
+</div>
+<p>For our current purpose, what we need is <strong>column proportions</strong>, therefore, we specify <code>2</code> for <em>the second argument</em> of <strong>the <code>prop.table()</code> function</strong>.</p>
+</section>
+<section id="add-column-or-row-totals-to-crosstab" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="add-column-or-row-totals-to-crosstab"><span class="header-section-number">5.2.3</span> Add Column (or Row) Totals to Crosstab</h3>
+<p>Since we computed <strong>the column proportions</strong>, we may also want to add <strong>the column totals</strong>, which must be 1 for all columns, for clarity. We can use <strong>the <code>addmargins()</code> function</strong> for this purpose.</p>
+<p>We <span class="red-text">assign the output of</span> <strong>the <code>prop.table()</code> function</strong> to a new object, and use this new object as <em>the first argument</em> of <strong>the <code>addmargins()</code> function</strong>.</p>
+<p>In the code below, I <span class="red-text">assign the output of</span> <strong>the <code>prop.table()</code> function</strong> to a new object, called <code>ptab</code>, and use <code>ptab</code> as <em>the first argument</em> of <strong>the <code>addmargins()</code> function</strong>. <em>The second argument</em> of <strong>the <code>addmargins()</code> function</strong> is specified at <code>1</code>, which instructs <strong>R</strong> to compute total of values <span class="red-text">for each column</span>, or equivalently, <span class="red-text">across rows</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the assignment operator ("&lt;-") to assign the output of </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the prop.table() function to a new object named "ptab." </span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  ptab <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tab, <span class="dv">2</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co"># The second argument of the addmargins() function is 1 </span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">#       = values are summed up across rows = total for each column.</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addmargins</span>(ptab, <span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+                  Worse       Same     Better
+  Very       0.01304682 0.03868360 0.12376238
+  Fairly     0.16423638 0.48267898 0.59777228
+  Not Very   0.30621642 0.31986143 0.22029703
+  Not At All 0.51650038 0.15877598 0.05816832
+  Sum        1.00000000 1.00000000 1.00000000</code></pre>
+</div>
+</div>
+<p>As you can see, column totals are 1 for all columns. Adding column totals makes it clear that what we have in our <strong>crosstab</strong> are <strong>column proportions</strong>.</p>
+<p>As you may expect, if we specify <em>the second argument</em> of <strong>the <code>addmargins()</code> function</strong> at <code>2</code>, <strong>R</strong> will calculate total of values <span class="red-text">for each row</span>, or equivalently, <span class="red-text">across columns</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The second argument of the addmargins() function is 2 </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       = values are summed up across columns = total for each row.</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addmargins</span>(ptab, <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+                  Worse       Same     Better        Sum
+  Very       0.01304682 0.03868360 0.12376238 0.17549279
+  Fairly     0.16423638 0.48267898 0.59777228 1.24468764
+  Not Very   0.30621642 0.31986143 0.22029703 0.84637489
+  Not At All 0.51650038 0.15877598 0.05816832 0.73344468</code></pre>
+</div>
+</div>
+</section>
+<section id="round-values-in-crosstab" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="round-values-in-crosstab"><span class="header-section-number">5.2.4</span> Round Values in Crosstab</h3>
+<p>In the above <strong>crosstab</strong>, the values have too many decimal places. We may want to round them to fewer decimal places. We can use <strong>the <code>round()</code> function</strong> for this purpose. <span class="red-text">A basic syntax</span> of <strong>the <code>round()</code> function</strong> is as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(object, number<span class="sc">-</span>of<span class="sc">-</span>desired<span class="sc">-</span>decimal<span class="sc">-</span>places) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It <span class="red-text">rounds the object</span> specified in <em>its first argument</em> to <span class="red-text">the number of decimal places</span> specified in <em>its second argument</em>.</p>
+<p>In the code below, I <span class="red-text">assign the output of</span> <strong>the <code>addmargins()</code> function</strong> to a new object, called <code>ptab_total</code>, and use <code>ptab_total</code> as <em>the first argument</em> of <strong>the <code>round()</code> function</strong>. <em>The second argument</em> of <strong>the <code>round()</code> function</strong> is specified at <code>2</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>  ptab_total <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(ptab, <span class="dv">1</span>) </span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(ptab_total, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+             Worse Same Better
+  Very        0.01 0.04   0.12
+  Fairly      0.16 0.48   0.60
+  Not Very    0.31 0.32   0.22
+  Not At All  0.52 0.16   0.06
+  Sum         1.00 1.00   1.00</code></pre>
+</div>
+</div>
+<p>Since the number specified in <em>the second argument</em> is 2, the values in <strong>the crosstab</strong> are rounded to two decimal places. By changing the number in <em>the second argument</em>, we can round the values in <strong>the corsstab</strong> to different decimal places. For example, below we round them to four decimal places.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(ptab_total, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+              Worse   Same Better
+  Very       0.0130 0.0387 0.1238
+  Fairly     0.1642 0.4827 0.5978
+  Not Very   0.3062 0.3199 0.2203
+  Not At All 0.5165 0.1588 0.0582
+  Sum        1.0000 1.0000 1.0000</code></pre>
+</div>
+</div>
+</section>
+<section id="cross-tabulation-in-percentage" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="cross-tabulation-in-percentage"><span class="header-section-number">5.2.5</span> Cross Tabulation in Percentage</h3>
+<p><strong>The crosstab</strong> derived above is in terms of <span class="red-text">proportion</span>. We can change this to one in terms of <span class="red-text">percentage</span> by simply <span class="red-text">multiplying the result by 100</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(ptab_total, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>  <span class="co"># We multiply the output of round(ptab_total, 4) by 100.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+              Worse   Same Better
+  Very         1.30   3.87  12.38
+  Fairly      16.42  48.27  59.78
+  Not Very    30.62  31.99  22.03
+  Not At All  51.65  15.88   5.82
+  Sum        100.00 100.00 100.00</code></pre>
+</div>
+</div>
+<p><strong>This crosstab</strong> shows <span class="red-text">the column percentage</span> of each tile for <strong>the mosaic plot</strong> drawn before in <a href="#sec-mosaic-plot" class="quarto-xref"><span>Section 5.1</span></a>.</p>
+</section>
+<section id="sequential-operations-on-r-objects" class="level3" data-number="5.2.6">
+<h3 data-number="5.2.6" class="anchored" data-anchor-id="sequential-operations-on-r-objects"><span class="header-section-number">5.2.6</span> Sequential Operations on R Objects</h3>
+<p>Note that when we derive <strong>the crosstab</strong> above, we <span class="red-text">created <strong>R objects</strong> sequentially by applying different <strong>R functions</strong> in each step</span>. Below is a summary of these sequantial operations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">table</span>( ces2019<span class="sc">$</span>satisfied_fedgovt2,   </span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>                ces2019<span class="sc">$</span>percep_economy_cps )   </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  ptab <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(tab, <span class="dv">2</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  ptab_total <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(ptab, <span class="dv">1</span>) </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(ptab_total, <span class="dv">4</span>) <span class="sc">*</span> <span class="dv">100</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            
+              Worse   Same Better
+  Very         1.30   3.87  12.38
+  Fairly      16.42  48.27  59.78
+  Not Very    30.62  31.99  22.03
+  Not At All  51.65  15.88   5.82
+  Sum        100.00 100.00 100.00</code></pre>
+</div>
+</div>
+<p>Specifically, we first created an object called <code>tab</code> by <strong>the <code>table()</code> function</strong>. Then, we applied <strong>the <code>prop.table()</code> function</strong> to <code>tab</code> to create a new object named <code>ptab</code>. After that, <strong>the <code>addmargins()</code> function</strong> was applied to <code>ptab</code> to create <code>ptab_total</code>. Finally, <strong>the <code>round</code> function</strong> was applied to <code>ptab_total</code> to produce <strong>the crosstab</strong> shown above.</p>
+<p>It is not unusual to use sequantial operations like this to edit <strong>R objects</strong> to produce the final object that we need.</p>
+</section>
+</section>
+<section id="scatterplot" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="scatterplot"><span class="header-section-number">5.3</span> Scatterplot</h2>
+<p>When the two variables are both <strong>quantitative variables taking many values</strong>, we may use <strong>a scatterplot</strong> to visualize the relationship.</p>
+<section id="basic-scatterplot-ggplot-geom_point" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="basic-scatterplot-ggplot-geom_point"><span class="header-section-number">5.3.1</span> Basic Scatterplot: <code>ggplot() + geom_point()</code></h3>
+<p>Below we will draw a scatterplot for <code>democrat</code> and <code>ranney3_gub_prop</code> from the <code>usstates2020</code> data frame. As you can see in the codebook for <code>usstates2020</code>, <code>democrat</code> is the percent of Democratic identifiers — individuals who identify themselves as Democrats — in each state, and <code>ranney3_gub_prop</code> is the proportion of two-party vote for a democratic gubernatorial candidate. We would expect a positive relationship between these two variables. Let’s see whether there is indeed a positive relationship by drawing a scatterplot.</p>
+<p>We can draw a scatterplot by adding the <code>geom_point()</code> function to the <code>ggplot()</code> function. Note that the <code>aes()</code> function is the argument of the <code>ggplot()</code> function this time. Within the <code>aes()</code> function, we need to specify the independent variable (<code>x =</code> ) and the dependent variable (<code>y =</code> ).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>      <span class="co"># aes() is specified in the ggplot() function. It should indicate the independent </span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(usstates2010,           <span class="co"># variable (x = ) and the dependent variable (y = ).</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> democrat, <span class="at">y =</span> ranney3_gub_prop)) <span class="sc">+</span> </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The scatterplot above suggests that there seems to be a positive relationship, but there are some outliers in the upper left quadrant — some states recorded a very high two party vote share for a Democratic gubernatorial candidate even with a relatively low proportion of Democratic identifiers. The warning message above indicates that there are two observations removed from the visualization because they have missing values for either <code>ranney3_gub_prop</code> or <code>democrat</code>.</p>
+<p>We can change by specifying the <code>shape</code>, <code>col</code>, and <code>size</code> arguments in the <code>geom_point()</code> function as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( usstates2010, </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> democrat, <span class="at">y =</span> ranney3_gub_prop) ) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span> ) <span class="co"># shape, col, and size arguments added.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>R uses numbers and a few symbols to specify the shape of points. You can look up the shape of points used in R online, for example <a href="https://r-graphics.org/recipe-scatter-shapes">here</a> (see Figure 5.6, and ignore the rest). As we have already seen, you can find the colors used in R online as well, for example, <a href="http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf">here</a> and <a href="https://www.nceas.ucsb.edu/sites/default/files/2020-04/colorPaletteCheatsheet.pdf">here</a>. You may specify a different number for <code>size</code> to see how the points will change.</p>
+<p>We may want to display both variables in percentage by multiplying <code>ranney3_gub_prop</code> by 100.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( usstates2010,       <span class="co"># ranney3_gub_prop is multiplied by 100.</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> democrat, <span class="at">y =</span> ranney3_gub_prop <span class="sc">*</span> <span class="dv">100</span>) ) <span class="sc">+</span> </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can further edit this scatterplot using the functions you have learned. See an example below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( usstates2010,       </span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>(<span class="at">x =</span> democrat, <span class="at">y =</span> ranney3_gub_prop <span class="sc">*</span> <span class="dv">100</span>) ) <span class="sc">+</span> </span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>( <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">3</span> ) <span class="sc">+</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Democratic Identifiers (%)"</span>) <span class="sc">+</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">"Two-Party Vote Share (%) </span><span class="sc">\n</span><span class="st">Democratic Gubernatorial Candidate"</span>) <span class="sc">+</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>), <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">15</span>,<span class="dv">75</span>)) <span class="sc">+</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="scatterplot-by-name-of-observations-ggplot-geom_text" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="scatterplot-by-name-of-observations-ggplot-geom_text"><span class="header-section-number">5.3.2</span> Scatterplot by Name of Observations: <code>ggplot() + geom_text()</code></h3>
+<p>So far we have seen scatterplots by points. We can also use texts instead of points to draw scatterplots. For this purpose, we replace the <code>geom_point()</code> function with the <code>geom_text()</code> function and specify the texts used in the scatterplot in the <code>label</code> argument in the <code>aes()</code> function inside the <code>ggplot()</code>.</p>
+<p>See the example below.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(usstates2010, </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> democrat, <span class="at">y =</span> ranney3_gub_prop, </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"test"</span>) ) <span class="sc">+</span>  <span class="co"># Specify texts in the label argument in the aes() function.</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>()                   <span class="co"># Then, use the geom_text() function.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If we specify a single text for the <code>label</code> argument as in the above example, that text is used for all data points. In the above example, I specified <code>label = "test"</code>, then as you can see, <code>test</code> was used for all data points.</p>
+<p>Or we can specify a variable in the data frame for the <code>label</code> argument. Then, the values of this variable are used for each observation. For the present example, it is useful if we have the name of states for each data point. In the <code>usstates2010</code> data frame, <code>state</code> is a variable on the name of a state, and <code>st</code> is the state postal code. Look up these variables in the <code>usstates2010</code> data frame by the <code>View()</code> function (alternatively, you can click the name of the data frame in the <code>Environment</code> tab in the upper right pane).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">View</span>(usstates2010)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img src="figures/RHB_Ch5_Fig1.png" class="img-fluid" style="width:50.0%"></p>
+<p>Below I used <code>st</code> in the <code>label</code> argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(usstates2010, </span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> democrat, <span class="at">y =</span> ranney3_gub_prop, </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> st) ) <span class="sc">+</span>     <span class="co"># Specify a variable in the label argument in the aes() function.</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>()                  <span class="co"># Then, use the geom_text() function.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can change by specifying the <code>size</code> and <code>col</code> arguments in the <code>geom_text()</code> function as follows.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( usstates2010, </span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">aes</span>( <span class="at">x =</span> democrat, <span class="at">y =</span> ranney3_gub_prop, </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">label =</span> st ) ) <span class="sc">+</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>              <span class="co"># Try other numbers for the size argument to see </span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>( <span class="at">size=</span><span class="fl">2.5</span>, <span class="at">col=</span><span class="st">"blue"</span> )  <span class="co"># how the size of texts changes.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="bivariate_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="288"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now we can see that the outliers in the upper left quadrant are Colorado (CO), West Virginia (WV), Montana (MT), and Arkansas (AR).</p>
+<p>We can of course further edit this scatterplot using the functions we have learned.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./des2.html" class="pagination-link" aria-label="Descriptive Statistics (2)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Statistics (2)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

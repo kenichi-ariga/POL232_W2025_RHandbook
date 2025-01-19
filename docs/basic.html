@@ -194,6 +194,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive Statistics (1)</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./des2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Statistics (2)</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -222,7 +228,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sec-new-rscript" id="toc-sec-new-rscript" class="nav-link" data-scroll-target="#sec-new-rscript"><span class="header-section-number">2.3.1</span> How to Start a New R Script</a></li>
   <li><a href="#very-basic-math" id="toc-very-basic-math" class="nav-link" data-scroll-target="#very-basic-math"><span class="header-section-number">2.3.2</span> Very Basic Math</a></li>
-  <li><a href="#create-a-variable-using-the-assignment-operator--" id="toc-create-a-variable-using-the-assignment-operator--" class="nav-link" data-scroll-target="#create-a-variable-using-the-assignment-operator--"><span class="header-section-number">2.3.3</span> Create a Variable Using the Assignment Operator (<code>&lt;-</code>)</a></li>
+  <li><a href="#sec-assignment-operator" id="toc-sec-assignment-operator" class="nav-link" data-scroll-target="#sec-assignment-operator"><span class="header-section-number">2.3.3</span> Create a Variable Using the Assignment Operator (<code>&lt;-</code>)</a></li>
   <li><a href="#see-whats-in-your-workspace-working-memory-ls-or-objects" id="toc-see-whats-in-your-workspace-working-memory-ls-or-objects" class="nav-link" data-scroll-target="#see-whats-in-your-workspace-working-memory-ls-or-objects"><span class="header-section-number">2.3.4</span> See What’s in Your Workspace (= Working Memory): <code>ls()</code> or <code>objects()</code></a></li>
   <li><a href="#remove-a-variable-from-your-workspace-remove-or-rm" id="toc-remove-a-variable-from-your-workspace-remove-or-rm" class="nav-link" data-scroll-target="#remove-a-variable-from-your-workspace-remove-or-rm"><span class="header-section-number">2.3.5</span> Remove a Variable from Your Workspace: <code>remove()</code> or <code>rm()</code></a></li>
   <li><a href="#remove-everything-removelistls-or-rmlistls" id="toc-remove-everything-removelistls-or-rmlistls" class="nav-link" data-scroll-target="#remove-everything-removelistls-or-rmlistls"><span class="header-section-number">2.3.6</span> Remove Everything: <code>remove(list=ls())</code> or <code>rm(list=ls())</code></a></li>
@@ -492,8 +498,8 @@ window.Quarto = {
 </div>
 <p><span class="red-text">In the output, numbers in square brackets at the beginning of each line represent a position of the first entry of each line</span>. As you see in the above output, <code>5</code> is the first entry of <code>5:100</code>, and <code>24</code> is the 20th entry of <code>5:100</code>, <code>43</code> is the 39th, and so forth.</p>
 </section>
-<section id="create-a-variable-using-the-assignment-operator--" class="level3" data-number="2.3.3">
-<h3 data-number="2.3.3" class="anchored" data-anchor-id="create-a-variable-using-the-assignment-operator--"><span class="header-section-number">2.3.3</span> Create a Variable Using the Assignment Operator (<code>&lt;-</code>)</h3>
+<section id="sec-assignment-operator" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="sec-assignment-operator"><span class="header-section-number">2.3.3</span> Create a Variable Using the Assignment Operator (<code>&lt;-</code>)</h3>
 <p>We can create <strong>a variable</strong> and assign a number or multiple numbers to <strong>this variable</strong> using the assignment operator, <code>&lt;-</code>. First, let’s assign a single number to <strong>a variable</strong>.</p>
 <p>For example, the following operation will assign the result of <code>1 + 5</code>, which is <code>6</code>, to <strong>a variable</strong> named <code>y</code>. Write this operation in your R script and then execute it (once again, see <a href="#sec-execute-rscript" class="quarto-xref"><span>Section 2.2.1</span></a> if you forget how to run a function from within an R script).</p>
 <div class="cell">
