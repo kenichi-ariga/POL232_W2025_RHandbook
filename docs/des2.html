@@ -177,6 +177,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bivariate Analysis</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simp_linreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./multi_linreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Multiple Linear Regression</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -206,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#standard-deviation-and-iqr-sd-iqr" id="toc-standard-deviation-and-iqr-sd-iqr" class="nav-link" data-scroll-target="#standard-deviation-and-iqr-sd-iqr"><span class="header-section-number">4.3.1</span> Standard Deviation and IQR: <code>sd()</code>, <code>IQR()</code></a></li>
   <li><a href="#mode-for-categorical-variables" id="toc-mode-for-categorical-variables" class="nav-link" data-scroll-target="#mode-for-categorical-variables"><span class="header-section-number">4.3.2</span> Mode for Categorical Variables</a></li>
-  <li><a href="#median-for-ordinal-catagorical-variables-change-factor-to-numeric-as.numeric" id="toc-median-for-ordinal-catagorical-variables-change-factor-to-numeric-as.numeric" class="nav-link" data-scroll-target="#median-for-ordinal-catagorical-variables-change-factor-to-numeric-as.numeric"><span class="header-section-number">4.3.3</span> Median for Ordinal Catagorical Variables — Change <code>Factor</code> to <code>Numeric</code>: <code>as.numeric()</code></a></li>
+  <li><a href="#sec-factor-to-numeric" id="toc-sec-factor-to-numeric" class="nav-link" data-scroll-target="#sec-factor-to-numeric"><span class="header-section-number">4.3.3</span> Median for Ordinal Catagorical Variables — Change <code>Factor</code> to <code>Numeric</code>: <code>as.numeric()</code></a></li>
   </ul></li>
   <li><a href="#box-plot-geom_boxplot" id="toc-box-plot-geom_boxplot" class="nav-link" data-scroll-target="#box-plot-geom_boxplot"><span class="header-section-number">4.4</span> Box Plot: geom_boxplot()</a></li>
   </ul>
@@ -603,8 +615,8 @@ not numeric or logical: returning NA</code></pre>
 </div>
 <p>As <span class="red-text">the mode</span> is <span class="red-text">the category with the largest number of observations</span>, we can easily identify “Same” as <span class="red-text">the mode</span> for this variable.</p>
 </section>
-<section id="median-for-ordinal-catagorical-variables-change-factor-to-numeric-as.numeric" class="level3" data-number="4.3.3">
-<h3 data-number="4.3.3" class="anchored" data-anchor-id="median-for-ordinal-catagorical-variables-change-factor-to-numeric-as.numeric"><span class="header-section-number">4.3.3</span> Median for Ordinal Catagorical Variables — Change <code>Factor</code> to <code>Numeric</code>: <code>as.numeric()</code></h3>
+<section id="sec-factor-to-numeric" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="sec-factor-to-numeric"><span class="header-section-number">4.3.3</span> Median for Ordinal Catagorical Variables — Change <code>Factor</code> to <code>Numeric</code>: <code>as.numeric()</code></h3>
 <p><code>percep_economy_cps</code> is <strong>an ordinal, categorical variable</strong> because there is a natural order among each category from “Worse” to “Same” to “Better.” Therefore, we may also want to find <span class="red-text">the median</span> for this variable. As we have seen, however, <strong>the <code>median()</code> function</strong> does not work for <span class="red-text">a categorical variable</span> stored as a <code>factor</code>. Therefore, to apply <strong>the <code>median()</code> function</strong> to <strong>an ordinal, categorical variable</strong>, we first need to transform the categorical variable stored as a <code>factor</code> to a <code>numeric</code> variable. We use <strong>the <code>as.numeric()</code> function</strong> for this purpose. We specify <span class="red-text">the name of the variable which we want to transform</span> to a <code>numeric</code> variable as <strong>the argument</strong> for <strong>the <code>as.numeric()</code> function</strong>.</p>
 <p>Let’s create a <code>numeric</code> version of <code>percep_economy_cps</code> using <strong>the <code>mutate()</code> and the <code>as.numeric()</code> functions</strong>. In the code below, I call the new variable <code>percep_ceonomy_cps_n</code>, in which <code>n</code> stands for a <code>numeric</code> variable.</p>
 <div class="cell">

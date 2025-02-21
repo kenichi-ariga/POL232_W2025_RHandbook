@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./simp_linreg.html" rel="next">
 <link href="./des2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -176,6 +177,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Bivariate Analysis</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./simp_linreg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -203,7 +210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cross-tabulation-in-percentage" id="toc-cross-tabulation-in-percentage" class="nav-link" data-scroll-target="#cross-tabulation-in-percentage"><span class="header-section-number">5.2.5</span> Cross Tabulation in Percentage</a></li>
   <li><a href="#sec-seq-op" id="toc-sec-seq-op" class="nav-link" data-scroll-target="#sec-seq-op"><span class="header-section-number">5.2.6</span> Sequential Operations on R Objects</a></li>
   </ul></li>
-  <li><a href="#scatterplot" id="toc-scatterplot" class="nav-link" data-scroll-target="#scatterplot"><span class="header-section-number">5.3</span> Scatterplot</a>
+  <li><a href="#sec-scatter" id="toc-sec-scatter" class="nav-link" data-scroll-target="#sec-scatter"><span class="header-section-number">5.3</span> Scatterplot</a>
   <ul class="collapse">
   <li><a href="#basic-scatterplot-ggplot-geom_point" id="toc-basic-scatterplot-ggplot-geom_point" class="nav-link" data-scroll-target="#basic-scatterplot-ggplot-geom_point"><span class="header-section-number">5.3.1</span> Basic Scatterplot: <code>ggplot() + geom_point()</code></a></li>
   <li><a href="#scatterplot-by-name-of-observations-ggplot-geom_text" id="toc-scatterplot-by-name-of-observations-ggplot-geom_text" class="nav-link" data-scroll-target="#scatterplot-by-name-of-observations-ggplot-geom_text"><span class="header-section-number">5.3.2</span> Scatterplot by Name of Observations: <code>ggplot() + geom_text()</code></a></li>
@@ -262,7 +269,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <ul>
 <li><p>I suggest you <span class="red-text">actually write</span> <strong>the R functions</strong> used below in your <strong>R script</strong> instead of copying and pasting them. See <a href="des1.html#sec-actually-write-rscript" class="quarto-xref"><span>Section 3.1.5</span></a> for <span class="red-text">why</span>.</p></li>
-<li><p>I also suggest you <span class="red-text">sufficiently annotate</span> your <strong>R script</strong> (i.e.&nbsp;leaving notes after the <code>#</code> sign) so that you can use your <strong>R script</strong> as your reference when you work on tutorial exercises or data analysis paper assignments. In ohter words, this <strong>R script</strong> will be <span class="red-text">your notes for this chapter</span>.</p></li>
+<li><p>I also suggest you <span class="red-text">sufficiently annotate</span> your <strong>R script</strong> (i.e.&nbsp;leaving notes after the <code>#</code> sign) so that you can use your <strong>R script</strong> as your reference when you work on tutorial exercises or data analysis paper assignments. In other words, this <strong>R script</strong> will be <span class="red-text">your notes for this chapter</span>.</p></li>
 </ul>
 <section id="sec-mosaic-plot" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="sec-mosaic-plot"><span class="header-section-number">5.1</span> Mosaic Plot</h2>
@@ -653,8 +660,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>It is not unusual to use sequantial operations like this to edit <strong>R objects</strong> to produce the final object that we need.</p>
 </section>
 </section>
-<section id="scatterplot" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="scatterplot"><span class="header-section-number">5.3</span> Scatterplot</h2>
+<section id="sec-scatter" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="sec-scatter"><span class="header-section-number">5.3</span> Scatterplot</h2>
 <p>When <span class="red-text">two variables</span> are both <strong>quantitative variables taking many values</strong>, we may use <strong>a scatterplot</strong> to visualize the relationship.</p>
 <section id="basic-scatterplot-ggplot-geom_point" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="basic-scatterplot-ggplot-geom_point"><span class="header-section-number">5.3.1</span> Basic Scatterplot: <code>ggplot() + geom_point()</code></h3>
@@ -1668,6 +1675,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./simp_linreg.html" class="pagination-link" aria-label="Simple Linear Regression">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Simple Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
